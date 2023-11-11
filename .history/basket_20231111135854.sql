@@ -221,7 +221,7 @@ ALTER TABLE `basket`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_users_address` FOREIGN KEY (`Address_id`) REFERENCES `address` (`Address_id`);
-  ADD CONSTRAINT `fk_users_payment` FOREIGN KEY (`PaymentID`) REFERENCES `payments` (`PaymentID`);
+  ADD CONSTRAINT `fk_users_payment` FOREIGN KEY (`PaymentID`) REFERENCES `address` (`PaymentID`);
 
 
 
@@ -230,7 +230,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `basketitem`
   ADD CONSTRAINT `basketitem_ibfk_1` FOREIGN KEY (`BasketID`) REFERENCES `basket` (`BasketID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `basketitem_ibfk_2` FOREIGN KEY (`BikeID`) REFERENCES `products` (`BikeID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `basketitem_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 

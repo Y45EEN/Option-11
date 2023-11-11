@@ -92,8 +92,7 @@ CREATE TABLE `users` (
   `Password` varchar(100) NOT NULL,
   `FirstName` varchar(100) NOT NULL,
   `LastName` varchar(100) NOT NULL,
-  `Address_id` int(11) NOT NULL,
-  `PaymentID` int(11) NOT NULL,
+  `ShippingAddress` varchar(100) NOT NULL,
   `PhoneNumber` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -102,25 +101,13 @@ CREATE TABLE `users` (
 --
 
 CREATE TABLE `address` (
-  `Address_id` int(11) NOT NULL,
+  `address_id` int(11) NOT NULL,
   `postcode` varchar(9) NOT NULL,
   `country` varchar(15) NOT NULL,
   `city` varchar(15) NOT NULL,
   `street` varchar(15) NOT NULL,
   `house_no` varchar(8) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Table structure for table `address`
---
-
-CREATE TABLE `payments` (
-  `PaymentID` int(11) NOT NULL,
-  `CardNumber` int(16) NOT NULL,
-  `SecurityCode` int(4) NOT NULL,
- 
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 --
 -- Indexes for dumped tables
@@ -132,14 +119,6 @@ CREATE TABLE `payments` (
 ALTER TABLE `basket`
   ADD PRIMARY KEY (`BasketID`),
   ADD KEY `UserID` (`UserID`);
-
---
--- Indexes for table `Payment`
---
-ALTER TABLE `payments`
-  ADD PRIMARY KEY (`PaymentID`),
-
-
 
 --
 -- Indexes for table `basketitem`
@@ -160,14 +139,13 @@ ALTER TABLE `products`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`UserID`);
-  ADD KEY `fk_users_address` (`Address_id`);
-  ADD KEY `fk_users_payment` (`PaymentID`);
+  ADD KEY `fk_users_address` (`address_id`);
 
 --
 -- Indexes for table `address`
 --
 ALTER TABLE `address`
-  ADD PRIMARY KEY (`Address_id`);
+  ADD PRIMARY KEY (`address_id`);
 
 
 
@@ -191,7 +169,7 @@ ALTER TABLE `basketitem`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `Address_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 
 --
@@ -220,9 +198,7 @@ ALTER TABLE `basket`
 -- Constraints for table `clients`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `fk_users_address` FOREIGN KEY (`Address_id`) REFERENCES `address` (`Address_id`);
-  ADD CONSTRAINT `fk_users_payment` FOREIGN KEY (`PaymentID`) REFERENCES `payments` (`PaymentID`);
-
+  ADD CONSTRAINT `fk_users_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`);
 
 
 --
@@ -230,7 +206,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `basketitem`
   ADD CONSTRAINT `basketitem_ibfk_1` FOREIGN KEY (`BasketID`) REFERENCES `basket` (`BasketID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `basketitem_ibfk_2` FOREIGN KEY (`BikeID`) REFERENCES `products` (`BikeID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `basketitem_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 

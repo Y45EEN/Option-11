@@ -93,7 +93,6 @@ CREATE TABLE `users` (
   `FirstName` varchar(100) NOT NULL,
   `LastName` varchar(100) NOT NULL,
   `Address_id` int(11) NOT NULL,
-  `PaymentID` int(11) NOT NULL,
   `PhoneNumber` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -161,7 +160,6 @@ ALTER TABLE `products`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`UserID`);
   ADD KEY `fk_users_address` (`Address_id`);
-  ADD KEY `fk_users_payment` (`PaymentID`);
 
 --
 -- Indexes for table `address`
@@ -221,8 +219,6 @@ ALTER TABLE `basket`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_users_address` FOREIGN KEY (`Address_id`) REFERENCES `address` (`Address_id`);
-  ADD CONSTRAINT `fk_users_payment` FOREIGN KEY (`PaymentID`) REFERENCES `payments` (`PaymentID`);
-
 
 
 --
@@ -230,7 +226,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `basketitem`
   ADD CONSTRAINT `basketitem_ibfk_1` FOREIGN KEY (`BasketID`) REFERENCES `basket` (`BasketID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `basketitem_ibfk_2` FOREIGN KEY (`BikeID`) REFERENCES `products` (`BikeID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `basketitem_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 
