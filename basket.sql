@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `basket` (
-  `BasketID` int(200) NOT NULL,
-  `UserID` int(200) NOT NULL,
+  `basketid` int(200) NOT NULL,
+  `userid` int(200) NOT NULL,
   `Creation_Date/Time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `Status` enum('Open','Completed') NOT NULL
+  `status` enum('open','completed') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -41,27 +41,27 @@ CREATE TABLE `basket` (
 --
 
 CREATE TABLE `basketitem` (
-  `BasketItemID` int(200) NOT NULL,
-  `BasketID` int(200) NOT NULL,
-  `BikeID` int(200) NOT NULL,
-  `Quantity` int(200) NOT NULL,
-  `TotalPrice` double NOT NULL
+  `basketitemid` int(200) NOT NULL,
+  `basketid` int(200) NOT NULL,
+  `bikeid` int(200) NOT NULL,
+  `quantity` int(200) NOT NULL,
+  `totalprice` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Table structure for table `bikes`
 --
 
 CREATE TABLE `bikes` (
-  `BikeID` int(100) NOT NULL,
-  `ProductName` varchar(255) NOT NULL,
-  `Description` varchar(255) NOT NULL,
-  `Price` double NOT NULL,
-  `StockQuantity` int(100) NOT NULL,
-  `ImageURL` varchar(255) NOT NULL,
-  `Category` varchar(255) NOT NULL
+  `bikeid` int(100) NOT NULL,
+  `productName` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `price` double NOT NULL,
+  `stockQuantity` int(100) NOT NULL,
+  `imageURL` varchar(255) NOT NULL,
+  `category` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
@@ -73,10 +73,10 @@ CREATE TABLE `bikes` (
 
 
 CREATE TABLE `colours` (
-  `ColourID` int(100) NOT NULL,
-  `ColourName` varchar(255) NOT NULL,
-  `Price` double NOT NULL,
-  `StockQuantity` int(100) NOT NULL,
+  `colourid` int(100) NOT NULL,
+  `colourname` varchar(255) NOT NULL,
+  `price` double NOT NULL,
+  `stockquantity` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
@@ -87,22 +87,27 @@ CREATE TABLE `colours` (
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `UserID` int(200) NOT NULL,
-  `Password` varchar(100) NOT NULL,
-  `FirstName` varchar(100) NOT NULL,
-  `LastName` varchar(100) NOT NULL,
-  `Address_id` int(11) NOT NULL,
-  `PaymentID` int(11) NOT NULL,
-  `PhoneNumber` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `users` (
+  `userid` bigint UNSIGNED NOT NULL,
+  `firstName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `addressid` int(11) NOT NULL,
+  `paymentid` int(11) NOT NULL,
+  `phonenumber` int(12) NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 --
 -- Table structure for table `address`
 --
 
 CREATE TABLE `address` (
-  `Address_id` int(11) NOT NULL,
+  `addressid` int(11) NOT NULL,
   `postcode` varchar(9) NOT NULL,
   `country` varchar(15) NOT NULL,
   `city` varchar(15) NOT NULL,
@@ -115,9 +120,9 @@ CREATE TABLE `address` (
 --
 
 CREATE TABLE `payments` (
-  `PaymentID` int(11) NOT NULL,
-  `CardNumber` int(16) NOT NULL,
-  `SecurityCode` int(4) NOT NULL,
+  `paymentid` int(11) NOT NULL,
+  `cardnumber` int(16) NOT NULL,
+  `securitycode` int(4) NOT NULL
  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -130,14 +135,22 @@ CREATE TABLE `payments` (
 -- Indexes for table `basket`
 --
 ALTER TABLE `basket`
-  ADD PRIMARY KEY (`BasketID`),
-  ADD KEY `UserID` (`UserID`);
+  ADD PRIMARY KEY (`basketid`),
+  ADD KEY `userid` (`userid`);
 
 --
 -- Indexes for table `Payment`
 --
 ALTER TABLE `payments`
-  ADD PRIMARY KEY (`PaymentID`),
+  ADD PRIMARY KEY (`paymentid`);
+
+
+--
+-- Indexes for table `colours`
+--
+ALTER TABLE `colours`
+  ADD PRIMARY KEY (`colourid`);
+
 
 
 
@@ -145,29 +158,29 @@ ALTER TABLE `payments`
 -- Indexes for table `basketitem`
 --
 ALTER TABLE `basketitem`
-  ADD PRIMARY KEY (`BasketItemID`),
-  ADD KEY `BasketID` (`BasketID`),
-  ADD KEY `ProductID` (`ProductID`);
+  ADD PRIMARY KEY (`basketitemid`),
+  ADD KEY `basketid` (`basketid`),
+  ADD KEY `bikeid` (`bikeid`);
 
 --
--- Indexes for table `products`
+-- Indexes for table `bikes`
 --
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`ProductID`);
+ALTER TABLE `bikes`
+  ADD PRIMARY KEY (`bikeid`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`UserID`);
-  ADD KEY `fk_users_address` (`Address_id`);
-  ADD KEY `fk_users_payment` (`PaymentID`);
+  ADD PRIMARY KEY (`userid`),
+  ADD KEY `fk_users_address` (`addressid`),
+  ADD KEY `fk_users_payment` (`paymentid`);
 
 --
 -- Indexes for table `address`
 --
 ALTER TABLE `address`
-  ADD PRIMARY KEY (`Address_id`);
+  ADD PRIMARY KEY (`addressid`);
 
 
 
@@ -179,32 +192,40 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `BasketID` int(200) NOT NULL AUTO_INCREMENT;
+  MODIFY `basketid` int(200) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `basketitem`
 --
 ALTER TABLE `basketitem`
-  MODIFY `BasketItemID` int(200) NOT NULL AUTO_INCREMENT;
+  MODIFY `basketitemid` int(200) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `Address_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `addressid` int(11) NOT NULL AUTO_INCREMENT;
 
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT for table `colours`
 --
-ALTER TABLE `products`
-  MODIFY `ProductID` int(100) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `colours`
+  MODIFY `colourid` int(11) NOT NULL AUTO_INCREMENT;
+
+
+
+--
+-- AUTO_INCREMENT for table `bikes`
+--
+ALTER TABLE `bikes`
+  MODIFY `bikeid` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(200) NOT NULL AUTO_INCREMENT;
+  MODIFY `userid` int(200) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -214,14 +235,14 @@ ALTER TABLE `users`
 -- Constraints for table `basket`
 --
 ALTER TABLE `basket`
-  ADD CONSTRAINT `basket_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `basket_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `clients`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `fk_users_address` FOREIGN KEY (`Address_id`) REFERENCES `address` (`Address_id`);
-  ADD CONSTRAINT `fk_users_payment` FOREIGN KEY (`PaymentID`) REFERENCES `payments` (`PaymentID`);
+  ADD CONSTRAINT `fk_users_address` FOREIGN KEY (`addressid`) REFERENCES `address` (`addressid`),
+  ADD CONSTRAINT `fk_users_payment` FOREIGN KEY (`paymentid`) REFERENCES `payments` (`paymentid`);
 
 
 
@@ -229,20 +250,12 @@ ALTER TABLE `users`
 -- Constraints for table `basketitem`
 --
 ALTER TABLE `basketitem`
-  ADD CONSTRAINT `basketitem_ibfk_1` FOREIGN KEY (`BasketID`) REFERENCES `basket` (`BasketID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `basketitem_ibfk_2` FOREIGN KEY (`BikeID`) REFERENCES `products` (`BikeID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `basketitem_ibfk_1` FOREIGN KEY (`basketid`) REFERENCES `basket` (`basketid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `basketitem_ibfk_2` FOREIGN KEY (`bikeid`) REFERENCES `bikes` (`bikeid`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 
-CREATE FUNCTION dbo.CalculateTotal()
-RETURNS money
-AS
-BEGIN
-    DECLARE @totalPrice int;
-    SELECT @totalPrice = (([Original Price] - [Discount Price]) + [Shipping Price]) + tax
-    FROM dbo.Items
-    Return @totalPrice
-END;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
