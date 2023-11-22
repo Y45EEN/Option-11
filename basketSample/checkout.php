@@ -1,50 +1,44 @@
 <?php
-// Connect to database
-$servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "project2";
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-// If the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Replace with your actual database credentials
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "test";
 
-    // Get form data
-    $name = $_POST['name'];
+    // Create a database connection
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    // Retrieve payment details from the form
+    $stripeToken = $_POST['stripeToken'];
+
+    // Retrieve user details from the form
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
     $address = $_POST['address'];
 
-    // Display user's order and total price
-    $sql = "SELECT * FROM cart";
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result) > 0) {
-        echo "<h2>Order placed successfully</h2>";
-        echo "<h2>Your Order:</h2>";
-        echo "<table border='1'>";
-        echo "<tr><th>Item Name</th><th>Quantity</th><th>Price</th></tr>";
-
-        while($row = mysqli_fetch_assoc($result)) {
-            echo "<tr><td>" . $row['item_name'] . "</td><td>" . $row['quantity'] . "</td><td>" . ($row['price'] * $row['quantity']) . "</td></tr>";
-        }
-
-        echo "</table>";
-        $sql = "SELECT SUM(price * quantity) AS total_price FROM cart";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_assoc($result);
-        $total_price = $row['total_price'];
-        echo "<h2>Total Price: $" . $total_price . "</h2>";
-        echo "<h2>Name: " . $name . "</h2>";
-        echo "<h2>Address: " . $address . "</h2>";
+    // Insert payment information into the database
+    $paymentInsertQuery = "INSERT INTO payment (stripe_token) VALUES ('$stripeToken')";
+    if (mysqli_query($conn, $paymentInsertQuery)) {
+        echo "Payment details inserted successfully. ";
     } else {
-        echo "Your cart is empty.";
+        echo "Error inserting payment details: " . mysqli_error($conn);
     }
-}
 
-// Close database connection
-mysqli_close($conn);
+    // Insert user information into the database
+    $userInsertQuery = "INSERT INTO user (first_name, last_name, address) VALUES ('$firstName', '$lastName', '$address')";
+    if (mysqli_query($conn, $userInsertQuery)) {
+        echo "User details inserted successfully.";
+    } else {
+        echo "Error inserting user details: " . mysqli_error($conn);
+    }
+
+    // Close database connection
+    mysqli_close($conn);
+}
 ?>
