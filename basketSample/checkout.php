@@ -1,50 +1,52 @@
 <?php
-// Connect to database
-$servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "project2";
-$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+require __DIR__ . "/vendor/autoload.php";
+
+$stripe_secret_key = "sk_test_51OGzN5Ko7dOOf9d4JFQvKqwWGSsOoTyHdny29HZlnXEH379lcVQKslIfoo0aZMKgXHI44NhPAk7AhXkWfnzJJwWO007HLxodc1";
+
+\Stripe\Stripe::setApiKey($stripe_secret_key);
+
+$cardNumber = $_POST['cardNumber'];
+$cardExpiry = $_POST['cardExpiry'];
+$cardCvc = $_POST['cardCvc'];
+$token = $_POST['stripeToken'];
+// Create a token using the collected card details
+$token = \Stripe\Token::create([
+    'card' => [
+        'number' => $cardNumber,
+        'exp_month' => substr($cardExpiry, 0, 2),
+        'exp_year' => substr($cardExpiry, -4),
+        'cvc' => $cardCvc,
+    ],
+]);
+
+
+$charge = \Stripe\Charge::create([
+  'amount' => 999,
+  'currency' => 'usd',
+  'description' => 'Example charge',
+  'source' => $token,
+]);
+
+// Perform actions with the token (e.g., store in a local database)
+// Example: Insert into a hypothetical payments table
+$mysqli = new mysqli('localhost', 'root', '', 'test');
+
+if ($mysqli->connect_error) {
+    die('Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
 }
 
-// If the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$sql = "INSERT INTO details (cardnum,exp,cvc) VALUES ('$cardNumber', '$cardExpiry','$cardCvc')";
+$result = $mysqli->query($sql);
 
-    // Get form data
-    $name = $_POST['name'];
-    $address = $_POST['address'];
-
-    // Display user's order and total price
-    $sql = "SELECT * FROM cart";
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result) > 0) {
-        echo "<h2>Order placed successfully</h2>";
-        echo "<h2>Your Order:</h2>";
-        echo "<table border='1'>";
-        echo "<tr><th>Item Name</th><th>Quantity</th><th>Price</th></tr>";
-
-        while($row = mysqli_fetch_assoc($result)) {
-            echo "<tr><td>" . $row['item_name'] . "</td><td>" . $row['quantity'] . "</td><td>" . ($row['price'] * $row['quantity']) . "</td></tr>";
-        }
-
-        echo "</table>";
-        $sql = "SELECT SUM(price * quantity) AS total_price FROM cart";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_assoc($result);
-        $total_price = $row['total_price'];
-        echo "<h2>Total Price: $" . $total_price . "</h2>";
-        echo "<h2>Name: " . $name . "</h2>";
-        echo "<h2>Address: " . $address . "</h2>";
-    } else {
-        echo "Your cart is empty.";
-    }
+if (!$result) {
+    die('Error: ' . $mysqli->error);
 }
 
-// Close database connection
-mysqli_close($conn);
-?>
+// Optionally, you can return a response to the client
+echo json_encode(['success' => true]);
+
+$mysqli->close();
+
+
+
