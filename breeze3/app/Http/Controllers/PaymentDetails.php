@@ -17,7 +17,7 @@ class PaymentDetails extends Controller
 
     public function payment () {
 
-        $basket = Basket::where('userid', auth()->user()->userid)->first(); 
+        $basket = Basket::where('userid', auth()->user()->userid)->where('status', 'open')->first(); 
      
 
         if(is_null($basket)) {

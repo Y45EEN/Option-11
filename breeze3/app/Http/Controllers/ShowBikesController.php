@@ -77,6 +77,7 @@ public function addBasket(Request $request) {
         //an erorr validation will be needed to add here, to check if thre is enough stock
         $basket->save();
         $bike->save();
+        
    
         return Redirect::route('products',['success' => 'Item successfully added to basket!']);
 

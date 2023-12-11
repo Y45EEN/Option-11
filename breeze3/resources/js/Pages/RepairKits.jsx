@@ -8,11 +8,10 @@ const RepairKits = ({ auth, repairKit }) => {
     return (
         <div>
             <NavBar auth={auth} />
-            <h1>Repair Kits for Sale</h1>
-          
-                <RepairKit  repairKit={repairKit} />
-         
-            <InertiaLink href={route("basket")}>Go to Basket</InertiaLink>
+
+            <RepairKit repairKit={repairKit} />
+
+            <InertiaLink className="text-white" href={route("basket")}>Go to Basket</InertiaLink>
         </div>
     );
 }

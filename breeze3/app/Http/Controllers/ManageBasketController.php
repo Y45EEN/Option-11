@@ -29,9 +29,9 @@ class ManageBasketController extends Controller
 
     public function search() 
 {
-    $basket = Basket::where('userid', auth()->user()->userid)->get();
+    $basket = Basket::where('userid', auth()->user()->userid)->where('status', 'open')->get();
 
-    $totalPrice = Basket::where('userid', auth()->user()->userid)->sum('totalprice');
+    $totalPrice = Basket::where('userid', auth()->user()->userid)->where('status', 'open')->sum('totalprice');
     
     $bikes = [];
     foreach ($basket as $item) {

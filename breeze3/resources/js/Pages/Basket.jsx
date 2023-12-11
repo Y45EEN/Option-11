@@ -122,7 +122,7 @@ export default function Basket({ auth, basket, totalprice, bikes }) {
                                 </button>
                             </div>
                         ) : (
-                            <p>Your basket is empty.</p>
+                            <p style={{ fontSize: "25px" }}>Your basket is empty.</p>
                         )}
                     </div>
                 </div>

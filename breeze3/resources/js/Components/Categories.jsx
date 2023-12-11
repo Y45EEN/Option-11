@@ -20,7 +20,7 @@ const Categories = () => {
                     <Col xs={12} md={4} className="ctg-image">
                         <a
                             className="text-decoration-none text-white"
-                            href={route('filter', { type: 'bikes' })}
+                            href={route('products')}
                         >
                             <Image
                                 src={bikeCategory}
@@ -33,7 +33,7 @@ const Categories = () => {
                     <Col xs={12} md={4} className="ctg-image">
                         <a
                             className="text-decoration-none text-white"
-                            href={route('filter', { type: 'clothes' })}
+                            href={route('clothing')}
                         >
                             <Image
                                 src={clothesCategory}

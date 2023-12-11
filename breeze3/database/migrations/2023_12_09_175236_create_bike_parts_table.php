@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bikeparts', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('bikepartsid')->unsigned();
             $table->string('productname');
             $table->string('description');
             $table->decimal('price', 8, 2);
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bike_parts');
+        Schema::dropIfExists('bikeparts');
     }
 };

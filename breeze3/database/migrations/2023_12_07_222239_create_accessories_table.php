@@ -12,8 +12,8 @@ return new class extends Migration
     public function up()
 {
     Schema::create('accessories', function (Blueprint $table) {
-        $table->id();
-        $table->string('name');
+        $table->bigIncrements('accessoryid')->unsigned();
+        $table->string('productname');
         $table->decimal('price', 8, 2);
         $table->string('description');
         $table->string('imageURL');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('accessories');
     }
 };

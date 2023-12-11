@@ -20,11 +20,10 @@ const Clothing = ({ auth, clothes }) => {
     return (
         <div>
             <NavBar auth={auth} />
-            <h1>Clothes for Sale</h1>
-      
-                <Clothes  clothes={clothes} />
-          
-            <InertiaLink href={route('basket')}>Go to Basket</InertiaLink>
+
+            <Clothes clothes={clothes} />
+
+            <InertiaLink className="text-white" href={route('basket')}>Go to Basket</InertiaLink>
         </div>
     );
 }

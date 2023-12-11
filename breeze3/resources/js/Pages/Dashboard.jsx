@@ -61,7 +61,7 @@ export default function Dashboard({ auth }) {
                     <Link onClick={(e) => handleDeleteConfirmation(e)} href={route('deleteAccount')} className=" text-center bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-300">
                         Delete your account
                     </Link>
-                    <Link href='' className=" text-center bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-300">
+                    <Link href={route('orderHistory')} className=" text-center bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-300">
                         Order History
                     </Link>
                 </div>

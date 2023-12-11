@@ -33,6 +33,15 @@ class ShowClothingController extends Controller
     }
     public function addBasket(Request $request) {
 
+        $validateInput = $request->validate([
+            'quantity' => 'required|not_in:0',
+            
+            
+    
+        ]);
+     
+        if ($validateInput) {
+
     
 
         $basket = new Basket();
@@ -48,6 +57,7 @@ class ShowClothingController extends Controller
         $basket->save();
 
         return Redirect::route('clothing');
+        }
 
 }
    

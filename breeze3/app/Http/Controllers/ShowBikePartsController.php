@@ -32,6 +32,15 @@ class ShowBikePartsController extends Controller
 
 public function addBasket(Request $request) {
 
+    $validateInput = $request->validate([
+        'quantity' => 'required|not_in:0',
+        
+        
+
+    ]);
+ 
+    if ($validateInput) {
+
         $basket = new Basket();
         $basket->userid =  auth()->user()->userid;
         $basket->bikepartsid = request('bikepartid_hidden');
@@ -45,6 +54,7 @@ public function addBasket(Request $request) {
         $basket->save();
 
         return Redirect::route('BikeParts');
+    }
 
 }
 }

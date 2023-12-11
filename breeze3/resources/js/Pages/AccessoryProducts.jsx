@@ -11,11 +11,10 @@ const AccessoryProducts = ({ auth, accessories }) => {
     return (
         <div>
             <NavBar auth={auth} />
-            <h1>Accessories for Sale</h1>
-            
-            <Accessory  accessories={accessories} />
-           
-            <InertiaLink href={route('basket')}>Go to Basket</InertiaLink>
+
+            <Accessory accessories={accessories} />
+
+            <InertiaLink className="text-white" href={route('basket')}>Go to Basket</InertiaLink>
         </div>
     );
 }

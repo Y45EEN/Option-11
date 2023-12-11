@@ -14,12 +14,11 @@ const BikeProducts = ({ auth, bikes }) => {
 
   return (
     <div>
-        <NavBar auth={auth} />
-      <h1>Bikes for Sale</h1>
- 
-        <Bike bikes={bikes} />
-   
-      <InertiaLink style={{ color: "white" }} href={route('basket')}>Go to Basket</InertiaLink>
+      <NavBar auth={auth} />
+
+      <Bike bikes={bikes} />
+
+      <InertiaLink className="text-white" href={route('basket')}>Go to Basket</InertiaLink>
     </div>
   );
 };

@@ -14,7 +14,7 @@ class AccessoryTableSeeder extends Seeder
     public function run(): void
     {
         Accessory::create([
-            'name' => 'Helmet',
+            'productname' => 'Helmet',
             'description' => 'A helmet to protect your head.',
             'price' => 49.99,
             'stockquantity' => 10,
@@ -24,7 +24,7 @@ class AccessoryTableSeeder extends Seeder
             'colour' => 'Black',
         ]);
         Accessory::create([
-            'name' => 'Helmet',
+            'productname' => 'Helmet',
             'description' => 'A helmet to protect your head.',
             'price' => 49.99,
             'stockquantity' => 10,
@@ -34,7 +34,7 @@ class AccessoryTableSeeder extends Seeder
             'colour' => 'Black',
         ]);
         Accessory::create([
-            'name' => 'Helmet',
+            'productname' => 'Helmet',
             'description' => 'A helmet to protect your head.',
             'price' => 49.99,
             'stockquantity' => 10,
@@ -44,7 +44,7 @@ class AccessoryTableSeeder extends Seeder
             'colour' => 'Black',
         ]);
         Accessory::create([
-            'name' => 'Knee Pads',
+            'productname' => 'Knee Pads',
             'description' => 'Knee pads to protect your knees.',
             'price' => 29.99,
             'stockquantity' => 10,
@@ -54,7 +54,7 @@ class AccessoryTableSeeder extends Seeder
             'colour' => 'Black',
         ]);
         Accessory::create([
-            'name' => 'Knee Pads',
+            'productname' => 'Knee Pads',
             'description' => 'Knee pads to protect your knees.',
             'price' => 29.99,
             'stockquantity' => 10,
@@ -64,7 +64,7 @@ class AccessoryTableSeeder extends Seeder
             'colour' => 'Black',
         ]);
         Accessory::create([
-            'name' => 'Knee Pads',
+            'productname' => 'Knee Pads',
             'description' => 'Knee pads to protect your knees.',
             'price' => 29.99,
             'stockquantity' => 10,
@@ -74,7 +74,7 @@ class AccessoryTableSeeder extends Seeder
             'colour' => 'Black',
         ]);
         Accessory::create([
-            'name' => 'Gloves',
+            'productname' => 'Gloves',
             'description' => 'Gloves to protect your hands.',
             'price' => 19.99,
             'stockquantity' => 10,
@@ -84,7 +84,7 @@ class AccessoryTableSeeder extends Seeder
             'colour' => 'Black',
         ]);
         Accessory::create([
-            'name' => 'Gloves',
+            'productname' => 'Gloves',
             'description' => 'Gloves to protect your hands.',
             'price' => 19.99,
             'stockquantity' => 10,
@@ -94,7 +94,7 @@ class AccessoryTableSeeder extends Seeder
             'colour' => 'Black',
         ]);
         Accessory::create([
-            'name' => 'Gloves',
+            'productname' => 'Gloves',
             'description' => 'Gloves to protect your hands.',
             'price' => 19.99,
             'stockquantity' => 10,
@@ -104,7 +104,7 @@ class AccessoryTableSeeder extends Seeder
             'colour' => 'Black',
         ]);
         Accessory::create([
-            'name' => 'Water Bottle',
+            'productname' => 'Water Bottle',
             'description' => 'A water bottle to keep you hydrated.',
             'price' => 9.99,
             'stockquantity' => 10,

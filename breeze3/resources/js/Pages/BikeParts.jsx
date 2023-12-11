@@ -20,11 +20,10 @@ const BikeParts = ({ auth, bikePart }) => {
     return (
         <div>
             <NavBar auth={auth} />
-            <h1>Bike Parts for Sale</h1>
-      
-                <BikePart  bikePart={bikePart} />
-          
-            <InertiaLink href={route('basket')}>Go to Basket</InertiaLink>
+
+            <BikePart bikePart={bikePart} />
+
+            <InertiaLink className="text-white" href={route('basket')}>Go to Basket</InertiaLink>
         </div>
     );
 }

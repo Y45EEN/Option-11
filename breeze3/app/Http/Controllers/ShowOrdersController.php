@@ -14,7 +14,7 @@ use Inertia\Inertia;
 class ShowOrdersController extends Controller{
     public function showAll()
     {
-        $orders = Orders::orderBy("id","desc")->paginate(10);
+        $orders = Orders::orderBy("ordersid","desc")->paginate(10);
         $baskets = Basket::all();
         return Inertia::render('Order', ['baskets' => $baskets]);
     }

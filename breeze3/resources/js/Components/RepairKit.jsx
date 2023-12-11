@@ -2,7 +2,7 @@ import { useForm } from "@inertiajs/react";
 import React, { useState } from "react";
 import InputError from "@/Components/InputError";
 
-const RepairKit = ({ repairKit }) => {
+const RepairKit = ({ repairKit, success }) => {
     const { data, setData, post, processing, errors, reset } = useForm({
         repairkitsid_hidden: "",
         quantity: "",
@@ -15,78 +15,59 @@ const RepairKit = ({ repairKit }) => {
         post("/addBasketRepairkit", data);
     };
 
-    let rows = [];
-    for (let i = 0; i < repairKit.length; i++) {
-        let bike = repairKit[i];
-        rows.push(
-            <tr
-                key={bike.repairkitsid}
-                onClick={() => {
-                    setSelectedRepairKit(bike.repairkitsid);
-                    setData("repairkitsid_hidden", bike.repairkitsid);
-                }}
-            >
-                <td>{bike.productname}</td>
+    const repairKitList = repairKit.map((kit) => (
+        <div
+            key={kit.repairkitsid}
+            className={`col-md-6 mb-4 ${selectedRepairKit === kit.repairkitsid ? "selected-repair-kit" : ""
+                }`}
+            onClick={() => {
+                setSelectedRepairKit(kit.repairkitsid);
+                setData("repairkitsid_hidden", kit.repairkitsid);
+            }}
+        >
+            <div className="card">
+                <div className="card-body">
+                    <h5 className="card-title text-center h4">{kit.productname}</h5>
+                    <p className="card-text">{kit.description}</p>
+                    <p className="card-text">
+                        <strong>Price:</strong> £{kit.price}
+                    </p>
+                    <p className="card-text">
+                        <strong>Category:</strong> {kit.category}
+                    </p>
+                    <p className="card-text">
+                        <strong>Compatible with:</strong> {kit.CompatibleWithType}
+                    </p>
+                    <div className="form-group">
+                        <label htmlFor={`quantity_${kit.repairkitsid}`}>Quantity</label>
+                        <input
+                            id={`quantity_${kit.repairkitsid}`}
+                            className="form-control"
+                            min="0"
+                            type="number"
+                            value={data.quantity}
+                            name="quantity"
+                            onChange={(e) => setData("quantity", e.target.value)}
+                        />
+                        <InputError message={errors.quantity} className="mt-2" />
+                    </div>
+                </div>
+                <div className="card-footer">
+                    <button type="submit" className="btn btn-dark text-dark">
+                        Add to basket
+                    </button>
+                </div>
+            </div>
+        </div>
+    ));
 
-                <td>{bike.description}</td>
-
-                <td style={{ color: "white" }}>£{bike.price} </td>
-
-                <input
-                    id="repairkitsid_hidden"
-                    min="0"
-                    style={{
-                        padding: "1px",
-                        color: "black",
-                    }}
-                    type="hidden"
-                    value={data.repairkitsid_hidden}
-                    name="repairkitsid_hidden"
-                    onChange={(e) => setData("repairkitsid_hidden", e.target.value)}
-                />
-
-               
-                <td>
-                    <button type="submit">Add to basket</button>
-                </td>
-            </tr>
-        );
-    }
     return (
         <form onSubmit={submit}>
-        <table style={{ color: "white" }}>
-            <thead>
-                <th>Repair Kit Name</th>
-                <th>Description</th>
-
-                <th>Price</th>
-
-                <th>Action</th>
-            </thead>
-            <br />
-            <tbody>{rows}</tbody>
-
-            <th>Quantity</th>
-            <input
-                id="quantity"
-                min="0"
-                style={{
-                    padding: "1px",
-                    color: "black",
-                }}
-                type="number"
-                value={data.quantity}
-                name="quantity"
-                onChange={(e) => setData("quantity", e.target.value)}
-            />
-             <InputError
-            message={errors.quantity}
-            className="mt-2"
-        />
-       
-        </table>
-    </form>
+            <div className="container">
+                <div className="row">{repairKitList}</div>
+            </div>
+        </form>
     );
-}
+};
 
 export default RepairKit;

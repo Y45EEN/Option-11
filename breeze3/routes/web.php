@@ -13,7 +13,6 @@ use App\Http\Controllers\ShowRepairKitsController;
 use App\Http\Controllers\ShowAccessoriesController;
 use App\Http\Controllers\ShowClothingController;
 use App\Http\Controllers\OrdersController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShowRepairBookingController;
 use App\Http\Controllers\ShowOrdersController;
 /*
@@ -38,8 +37,8 @@ Route::get('/', function () {
 
 Route::get('/updateAccount', function () {
 
-
-
+   
+    
     return Inertia::render('UpdateAccount');
 })->middleware(['auth', 'verified'])->name('updateAccount');
 
@@ -58,7 +57,7 @@ Route::post('update', [ManageAccount::class, 'update'])->name('update');
 
 
     Route::match(['get', 'post'],'/checkout','App\Http\Controllers\PaymentDetails@payment')->name('checkout');
-
+  
 
 
 
@@ -76,6 +75,7 @@ Route::get('/AccessoryProducts', [ShowAccessoriesController::class, 'showAll'])-
 Route::get('/RepairKits', [ShowRepairKitsController::class, 'showAll'])->name('repairKits');
 
 Route::get('/Clothing', [ShowClothingController::class, 'showAll'])->name('clothing');
+
 
 Route::get('/RepairBooking', [ShowRepairBookingController::class, 'showAll'])->name('repairBooking');
 
@@ -99,11 +99,13 @@ Route::middleware('auth')->group(function () {
     Route::match(['get', 'post'],'/addBasketClothing','App\Http\Controllers\ShowClothingController@addBasket')->name('addBasketClothing');
 
     Route::match(['get', 'post'],'/makeOrder','App\Http\Controllers\OrdersController@makeOrder')->name('makeOrder');
-
-
+ 
+ 
     Route::match(['get', 'post'],'/deleteProduct','App\Http\Controllers\ManageBasketController@deleteProduct')->name('deleteProduct');
 
-
+    Route::match(['get', 'post'],'/orderHistory','App\Http\Controllers\OrdersController@showAll')->name('orderHistory');
+  
+    
 });
 
 require __DIR__.'/auth.php';

@@ -2,7 +2,7 @@ import { useForm } from "@inertiajs/react";
 import React, { useState } from "react";
 import InputError from "@/Components/InputError";
 
-const Accessory = ({accessories}) => {
+const Accessory = ({ accessories }) => {
     const { data, setData, post, processing, errors, reset } = useForm({
         accessoryid_hidden: "",
         quantity: "",
@@ -15,77 +15,61 @@ const Accessory = ({accessories}) => {
         post("/addBasketAccessory", data);
     };
 
-    let rows = [];
-    for (let i = 0; i < accessories.length; i++) {
-        let bike = accessories[i];
-        rows.push(
-            <tr
-                key={bike.bikeid}
-                onClick={() => {
-                    setSelectedAccessory(bike.accessoryid);
-                    setData("accessoryid_hidden", bike.accessoryid);
-                }}
-            >
-                <td>{bike.productname}</td>
+    const accessoryList = accessories.map((accessory) => (
+        <div
+            key={accessory.accessoryid}
+            className={`col-md-6 mb-4 ${selectedAccessory === accessory.accessoryid ? "selected-accessory" : ""
+                }`}
+            onClick={() => {
+                setSelectedAccessory(accessory.accessoryid);
+                setData("accessoryid_hidden", accessory.accessoryid);
+            }}
+        >
+            <div className="card">
+                <div className="card-body">
+                    <h5 className="card-title text-center h4">{accessory.productname}</h5>
+                    <p className="card-text">{accessory.description}</p>
+                    <p className="card-text">
+                        <strong>Price:</strong> £{accessory.price}
+                    </p>
+                    <p className="card-text">
+                        <strong>Category:</strong> {accessory.category}
+                    </p>
+                    <p className="card-text">
+                        <strong>Size:</strong> {accessory.size}
+                    </p>
+                    <p className="card-text">
+                        <strong>Colour:</strong> {accessory.colour}
+                    </p>
+                    <div className="form-group">
+                        <label htmlFor={`quantity_${accessory.accessoryid}`}>Quantity</label>
+                        <input
+                            id={`quantity_${accessory.accessoryid}`}
+                            className="form-control"
+                            min="0"
+                            type="number"
+                            value={data.quantity}
+                            name="quantity"
+                            onChange={(e) => setData("quantity", e.target.value)}
+                        />
+                        <InputError message={errors.quantity} className="mt-2" />
+                    </div>
+                </div>
+                <div className="card-footer">
+                    <button type="submit" className="btn btn-dark text-dark">
+                        Add to basket
+                    </button>
+                </div>
+            </div>
+        </div>
+    ));
 
-                <td>{bike.description}</td>
-
-                <td style={{ color: "white" }}>£{bike.price} </td>
-
-                <input
-                    id="accessoryid_hidden"
-                    min="0"
-                    style={{
-                        padding: "1px",
-                        color: "black",
-                    }}
-                    type="hidden"
-                    value={data.accessoryid_hidden}
-                    name="accessoryid_hidden"
-                    onChange={(e) => setData("accessoryid_hidden", e.target.value)}
-                />
-
-               
-                <td>
-                    <button type="submit">Add to basket</button>
-                </td>
-            </tr>
-        );
-    }
     return (
         <form onSubmit={submit}>
-        <table style={{ color: "white" }}>
-            <thead>
-                <th>Accessory Name</th>
-                <th>Description</th>
-
-                <th>Price</th>
-
-                <th>Action</th>
-            </thead>
-            <br />
-            <tbody>{rows}</tbody>
-
-            <th>Quantity</th>
-            <input
-                id="quantity"
-                min="0"
-                style={{
-                    padding: "1px",
-                    color: "black",
-                }}
-                type="number"
-                value={data.quantity}
-                name="quantity"
-                onChange={(e) => setData("quantity", e.target.value)}
-            />
-             <InputError
-            message={errors.quantity}
-            className="mt-2"
-        />
-       
-        </table>
-    </form>
+            <div className="container">
+                <div className="row">{accessoryList}</div>
+            </div>
+        </form>
     );
 };
 
