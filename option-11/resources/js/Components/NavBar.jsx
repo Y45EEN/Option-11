@@ -26,7 +26,20 @@ const NavBar = ({ auth }) => {
                             </NavDropdown.Item>
                             <NavDropdown.Item href={route('repairKits')}>Repair Kits</NavDropdown.Item>
                             <NavDropdown.Item href={route('BikeParts')}>Bike Parts</NavDropdown.Item>
+                          
                         </NavDropdown>
+                        <Nav.Link
+                            className="text-grey  "
+                            href="/contactus"
+                        >
+                            Contact us
+                        </Nav.Link>
+                        <Nav.Link
+                            className="text-grey  "
+                            href="/aboutus"
+                        >
+                            About us
+                        </Nav.Link>
                         {auth.user ? (
                             <>
                                 {" "}
