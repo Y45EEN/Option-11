@@ -15,7 +15,16 @@ use Carbon\Carbon;
 use Carbon\CarbonInterface;
 use DateTimeInterface;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+<<<<<<< Updated upstream:option115/vendor/nesbot/carbon/src/Carbon/Doctrine/CarbonTypeConverter.php
 use Doctrine\DBAL\Types\ConversionException;
+=======
+use Doctrine\DBAL\Platforms\DB2Platform;
+use Doctrine\DBAL\Platforms\OraclePlatform;
+use Doctrine\DBAL\Platforms\SQLitePlatform;
+use Doctrine\DBAL\Platforms\SQLServerPlatform;
+use Doctrine\DBAL\Types\Exception\InvalidType;
+use Doctrine\DBAL\Types\Exception\ValueNotConvertible;
+>>>>>>> Stashed changes:breeze3/vendor/carbonphp/carbon-doctrine-types/src/Carbon/Doctrine/CarbonTypeConverter.php
 use Exception;
 
 /**
@@ -36,6 +45,7 @@ trait CarbonTypeConverter
      */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
+<<<<<<< Updated upstream:option115/vendor/nesbot/carbon/src/Carbon/Doctrine/CarbonTypeConverter.php
         $precision = $fieldDeclaration['precision'] ?: 10;
 
         if ($fieldDeclaration['secondPrecision'] ?? false) {
@@ -45,6 +55,12 @@ trait CarbonTypeConverter
         if ($precision === 10) {
             $precision = DateTimeDefaultPrecision::get();
         }
+=======
+        $precision = min(
+            $fieldDeclaration['precision'] ?? DateTimeDefaultPrecision::get(),
+            $this->getMaximumPrecision($platform),
+        );
+>>>>>>> Stashed changes:breeze3/vendor/carbonphp/carbon-doctrine-types/src/Carbon/Doctrine/CarbonTypeConverter.php
 
         $type = parent::getSQLDeclaration($fieldDeclaration, $platform);
 
@@ -99,6 +115,7 @@ trait CarbonTypeConverter
         return $date;
     }
 
+<<<<<<< Updated upstream:option115/vendor/nesbot/carbon/src/Carbon/Doctrine/CarbonTypeConverter.php
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      *
@@ -119,5 +136,22 @@ trait CarbonTypeConverter
             $this->getName(),
             ['null', 'DateTime', 'Carbon']
         );
+=======
+    private function getMaximumPrecision(AbstractPlatform $platform): int
+    {
+        if ($platform instanceof DB2Platform) {
+            return 12;
+        }
+
+        if ($platform instanceof OraclePlatform) {
+            return 9;
+        }
+
+        if ($platform instanceof SQLServerPlatform || $platform instanceof SQLitePlatform) {
+            return 3;
+        }
+
+        return 6;
+>>>>>>> Stashed changes:breeze3/vendor/carbonphp/carbon-doctrine-types/src/Carbon/Doctrine/CarbonTypeConverter.php
     }
 }

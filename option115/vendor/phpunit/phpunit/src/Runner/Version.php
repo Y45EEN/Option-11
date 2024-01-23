@@ -34,7 +34,11 @@ final class Version
         }
 
         if (self::$version === '') {
+<<<<<<< Updated upstream:option115/vendor/phpunit/phpunit/src/Runner/Version.php
             self::$version = (new VersionId('10.4.2', dirname(__DIR__, 2)))->asString();
+=======
+            self::$version = (new VersionId('10.5.2', dirname(__DIR__, 2)))->asString();
+>>>>>>> Stashed changes:breeze3/vendor/phpunit/phpunit/src/Runner/Version.php
         }
 
         return self::$version;

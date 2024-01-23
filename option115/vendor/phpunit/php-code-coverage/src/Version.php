@@ -19,7 +19,11 @@ final class Version
     public static function id(): string
     {
         if (self::$version === '') {
+<<<<<<< Updated upstream:option115/vendor/phpunit/php-code-coverage/src/Version.php
             self::$version = (new VersionId('10.1.7', dirname(__DIR__)))->asString();
+=======
+            self::$version = (new VersionId('10.1.10', dirname(__DIR__)))->asString();
+>>>>>>> Stashed changes:breeze3/vendor/phpunit/php-code-coverage/src/Version.php
         }
 
         return self::$version;

@@ -11,6 +11,12 @@ namespace Illuminate\Support\Facades;
  * @method static bool createDatabase(string $name)
  * @method static bool dropDatabaseIfExists(string $name)
  * @method static bool hasTable(string $table)
+<<<<<<< Updated upstream:option115/vendor/laravel/framework/src/Illuminate/Support/Facades/Schema.php
+=======
+ * @method static bool hasView(string $view)
+ * @method static array getTables()
+ * @method static array getViews()
+>>>>>>> Stashed changes:breeze3/vendor/laravel/framework/src/Illuminate/Support/Facades/Schema.php
  * @method static bool hasColumn(string $table, string $column)
  * @method static bool hasColumns(string $table, array $columns)
  * @method static void whenTableHasColumn(string $table, string $column, \Closure $callback)

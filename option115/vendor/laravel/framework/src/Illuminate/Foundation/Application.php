@@ -38,7 +38,11 @@ class Application extends Container implements ApplicationContract, CachesConfig
      *
      * @var string
      */
+<<<<<<< Updated upstream:option115/vendor/laravel/framework/src/Illuminate/Foundation/Application.php
     const VERSION = '10.31.0';
+=======
+    const VERSION = '10.35.0';
+>>>>>>> Stashed changes:breeze3/vendor/laravel/framework/src/Illuminate/Foundation/Application.php
 
     /**
      * The base path for the Laravel installation.

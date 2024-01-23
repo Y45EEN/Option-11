@@ -159,9 +159,76 @@ class Builder
     {
         $table = $this->connection->getTablePrefix().$table;
 
+<<<<<<< Updated upstream:option115/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php
         return count($this->connection->selectFromWriteConnection(
             $this->grammar->compileTableExists(), [$table]
         )) > 0;
+=======
+        foreach ($this->getTables() as $value) {
+            if (strtolower($table) === strtolower($value['name'])) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Determine if the given view exists.
+     *
+     * @param  string  $view
+     * @return bool
+     */
+    public function hasView($view)
+    {
+        $view = $this->connection->getTablePrefix().$view;
+
+        foreach ($this->getViews() as $value) {
+            if (strtolower($view) === strtolower($value['name'])) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Get the tables that belong to the database.
+     *
+     * @return array
+     */
+    public function getTables()
+    {
+        return $this->connection->getPostProcessor()->processTables(
+            $this->connection->selectFromWriteConnection($this->grammar->compileTables())
+        );
+    }
+
+    /**
+     * Get the views that belong to the database.
+     *
+     * @return array
+     */
+    public function getViews()
+    {
+        return $this->connection->getPostProcessor()->processViews(
+            $this->connection->selectFromWriteConnection($this->grammar->compileViews())
+        );
+    }
+
+    /**
+     * Get all of the table names for the database.
+     *
+     * @deprecated Will be removed in a future Laravel version.
+     *
+     * @return array
+     *
+     * @throws \LogicException
+     */
+    public function getAllTables()
+    {
+        throw new LogicException('This database driver does not support getting all tables.');
+>>>>>>> Stashed changes:breeze3/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php
     }
 
     /**

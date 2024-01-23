@@ -83,6 +83,7 @@ final class JunitXmlLogger
     private ?DOMElement $currentTestCase = null;
     private ?HRTime $time                = null;
     private bool $prepared               = false;
+    private bool $preparationFailed      = false;
 
     /**
      * @throws EventFacadeIsSealedException
@@ -176,7 +177,29 @@ final class JunitXmlLogger
      * @throws InvalidArgumentException
      * @throws NoDataSetFromDataProviderException
      */
+<<<<<<< Updated upstream:option115/vendor/phpunit/phpunit/src/Logging/JUnit/JunitXmlLogger.php
     public function testPrepared(Prepared $event): void
+=======
+    public function testPreparationStarted(PreparationStarted $event): void
+    {
+        $this->createTestCase($event);
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     * @throws NoDataSetFromDataProviderException
+     */
+    public function testPreparationFailed(): void
+    {
+        $this->preparationFailed = true;
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     * @throws NoDataSetFromDataProviderException
+     */
+    public function testPrepared(): void
+>>>>>>> Stashed changes:breeze3/vendor/phpunit/phpunit/src/Logging/JUnit/JunitXmlLogger.php
     {
         $this->createTestCase($event);
         $this->prepared = true;
@@ -187,6 +210,10 @@ final class JunitXmlLogger
      */
     public function testFinished(Finished $event): void
     {
+        if ($this->preparationFailed) {
+            return;
+        }
+
         $this->handleFinish($event->telemetryInfo(), $event->numberOfAssertionsPerformed());
     }
 
@@ -273,6 +300,11 @@ final class JunitXmlLogger
         $facade->registerSubscribers(
             new TestSuiteStartedSubscriber($this),
             new TestSuiteFinishedSubscriber($this),
+<<<<<<< Updated upstream:option115/vendor/phpunit/phpunit/src/Logging/JUnit/JunitXmlLogger.php
+=======
+            new TestPreparationStartedSubscriber($this),
+            new TestPreparationFailedSubscriber($this),
+>>>>>>> Stashed changes:breeze3/vendor/phpunit/phpunit/src/Logging/JUnit/JunitXmlLogger.php
             new TestPreparedSubscriber($this),
             new TestFinishedSubscriber($this),
             new TestErroredSubscriber($this),

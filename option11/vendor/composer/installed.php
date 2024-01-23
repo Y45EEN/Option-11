@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '7e4e91438d198a0961562b4badb7fcb97a7e5bbb',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -19,6 +19,18 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
+=======
+        'carbonphp/carbon-doctrine-types' => array(
+            'pretty_version' => '3.1.0',
+            'version' => '3.1.0.0',
+            'reference' => 'a31d3358a2a5d6ae947df1691d1f321418a5f3d5',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../carbonphp/carbon-doctrine-types',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
         'cordoval/hamcrest-php' => array(
             'dev_requirement' => true,
             'replaced' => array(
@@ -113,36 +125,36 @@
             'dev_requirement' => false,
         ),
         'guzzlehttp/guzzle' => array(
-            'pretty_version' => '7.8.0',
-            'version' => '7.8.0.0',
-            'reference' => '1110f66a6530a40fe7aea0378fe608ee2b2248f9',
+            'pretty_version' => '7.8.1',
+            'version' => '7.8.1.0',
+            'reference' => '41042bc7ab002487b876a0683fc8dce04ddce104',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/guzzle',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'guzzlehttp/promises' => array(
-            'pretty_version' => '2.0.1',
-            'version' => '2.0.1.0',
-            'reference' => '111166291a0f8130081195ac4556a5587d7f1b5d',
+            'pretty_version' => '2.0.2',
+            'version' => '2.0.2.0',
+            'reference' => 'bbff78d96034045e58e13dedd6ad91b5d1253223',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/promises',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'guzzlehttp/psr7' => array(
-            'pretty_version' => '2.6.1',
-            'version' => '2.6.1.0',
-            'reference' => 'be45764272e8873c72dbe3d2edcfdfcc3bc9f727',
+            'pretty_version' => '2.6.2',
+            'version' => '2.6.2.0',
+            'reference' => '45b30f99ac27b5ca93cb4831afe16285f57b8221',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/psr7',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'guzzlehttp/uri-template' => array(
-            'pretty_version' => 'v1.0.2',
-            'version' => '1.0.2.0',
-            'reference' => '61bf437fc2197f587f6857d3ff903a24f1731b5d',
+            'pretty_version' => 'v1.0.3',
+            'version' => '1.0.3.0',
+            'reference' => 'ecea8feef63bd4fef1f037ecb288386999ecc11c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/uri-template',
             'aliases' => array(),
@@ -160,199 +172,331 @@
         'illuminate/auth' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/broadcasting' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/bus' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/cache' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/collections' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/conditionable' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/config' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/console' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/container' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/contracts' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/cookie' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/database' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/encryption' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/events' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/filesystem' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/hashing' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/http' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/log' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/macroable' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/mail' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/notifications' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/pagination' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/pipeline' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/process' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/queue' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/redis' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/routing' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/session' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/support' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/testing' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/translation' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/validation' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'illuminate/view' => array(
             'dev_requirement' => false,
             'replaced' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
                 0 => 'v10.31.0',
+=======
+                0 => 'v10.35.0',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             ),
         ),
         'kodova/hamcrest-php' => array(
@@ -362,27 +506,33 @@
             ),
         ),
         'laravel/framework' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
             'pretty_version' => 'v10.31.0',
             'version' => '10.31.0.0',
             'reference' => '507ce9b28bce4b5e4140c28943092ca38e9a52e4',
+=======
+            'pretty_version' => 'v10.35.0',
+            'version' => '10.35.0.0',
+            'reference' => '91ec2d92d2f6007e9084fe06438b99c91845da69',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/framework',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '7e4e91438d198a0961562b4badb7fcb97a7e5bbb',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'laravel/pint' => array(
-            'pretty_version' => 'v1.13.6',
-            'version' => '1.13.6.0',
-            'reference' => '3e3d2ab01c7d8b484c18e6100ecf53639c744fa7',
+            'pretty_version' => 'v1.13.7',
+            'version' => '1.13.7.0',
+            'reference' => '4157768980dbd977f1c4b4cc94997416d8b30ece',
             'type' => 'project',
             'install_path' => __DIR__ . '/../laravel/pint',
             'aliases' => array(),
@@ -398,9 +548,15 @@
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
             'pretty_version' => 'v1.26.0',
             'version' => '1.26.0.0',
             'reference' => 'c60fe037004e272efd0d81f416ed2bfc623d70b4',
+=======
+            'pretty_version' => 'v1.26.3',
+            'version' => '1.26.3.0',
+            'reference' => 'fa1ad5fbb03686dfc752bfd1861d86091cc1c32d',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/sail',
             'aliases' => array(),
@@ -461,18 +617,30 @@
             'dev_requirement' => false,
         ),
         'league/flysystem' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
             'pretty_version' => '3.19.0',
             'version' => '3.19.0.0',
             'reference' => '1b2aa10f2326e0351399b8ce68e287d8e9209a83',
+=======
+            'pretty_version' => '3.23.0',
+            'version' => '3.23.0.0',
+            'reference' => 'd4ad81e2b67396e33dc9d7e54ec74ccf73151dcc',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/flysystem',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'league/flysystem-local' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
             'pretty_version' => '3.19.0',
             'version' => '3.19.0.0',
             'reference' => '8d868217f9eeb4e9a7320db5ccad825e9a7a4076',
+=======
+            'pretty_version' => '3.23.0',
+            'version' => '3.23.0.0',
+            'reference' => '5cf046ba5f059460e86a997c504dd781a39a109b',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/flysystem-local',
             'aliases' => array(),
@@ -488,9 +656,9 @@
             'dev_requirement' => false,
         ),
         'mockery/mockery' => array(
-            'pretty_version' => '1.6.6',
-            'version' => '1.6.6.0',
-            'reference' => 'b8e0bb7d8c604046539c1115994632c74dcb361e',
+            'pretty_version' => '1.6.7',
+            'version' => '1.6.7.0',
+            'reference' => '0cc058854b3195ba21dc6b1f7b1f60f4ef3a9c06',
             'type' => 'library',
             'install_path' => __DIR__ . '/../mockery/mockery',
             'aliases' => array(),
@@ -521,9 +689,15 @@
             'dev_requirement' => true,
         ),
         'nesbot/carbon' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
             'pretty_version' => '2.71.0',
             'version' => '2.71.0.0',
             'reference' => '98276233188583f2ff845a0f992a235472d9466a',
+=======
+            'pretty_version' => '2.72.1',
+            'version' => '2.72.1.0',
+            'reference' => '2b3b3db0a2d0556a177392ff1a3bf5608fa09f78',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             'type' => 'library',
             'install_path' => __DIR__ . '/../nesbot/carbon',
             'aliases' => array(),
@@ -548,9 +722,9 @@
             'dev_requirement' => false,
         ),
         'nikic/php-parser' => array(
-            'pretty_version' => 'v4.17.1',
-            'version' => '4.17.1.0',
-            'reference' => 'a6303e50c90c355c7eeee2c4a8b27fe8dc8fef1d',
+            'pretty_version' => 'v4.18.0',
+            'version' => '4.18.0.0',
+            'reference' => '1bcbb2179f97633e98bbbc87044ee2611c7d7999',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nikic/php-parser',
             'aliases' => array(),
@@ -602,9 +776,15 @@
             'dev_requirement' => false,
         ),
         'phpunit/php-code-coverage' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
             'pretty_version' => '10.1.7',
             'version' => '10.1.7.0',
             'reference' => '355324ca4980b8916c18b9db29f3ef484078f26e',
+=======
+            'pretty_version' => '10.1.10',
+            'version' => '10.1.10.0',
+            'reference' => '599109c8ca6bae97b23482d557d2874c25a65e59',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/php-code-coverage',
             'aliases' => array(),
@@ -647,9 +827,15 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
             'pretty_version' => '10.4.2',
             'version' => '10.4.2.0',
             'reference' => 'cacd8b9dd224efa8eb28beb69004126c7ca1a1a1',
+=======
+            'pretty_version' => '10.5.2',
+            'version' => '10.5.2.0',
+            'reference' => '5aedff46afba98dddecaa12349ec044d9103d4fe',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
@@ -999,9 +1185,15 @@
             'dev_requirement' => false,
         ),
         'symfony/css-selector' => array(
+<<<<<<< Updated upstream:option11/vendor/composer/installed.php
             'pretty_version' => 'v6.3.2',
             'version' => '6.3.2.0',
             'reference' => '883d961421ab1709877c10ac99451632a3d6fa57',
+=======
+            'pretty_version' => 'v7.0.0',
+            'version' => '7.0.0.0',
+            'reference' => 'bb51d46e53ef8d50d523f0c5faedba056a27943e',
+>>>>>>> Stashed changes:breeze3/vendor/composer/installed.php
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/css-selector',
             'aliases' => array(),
@@ -1272,9 +1464,9 @@
             'dev_requirement' => true,
         ),
         'tijsverkoyen/css-to-inline-styles' => array(
-            'pretty_version' => '2.2.6',
-            'version' => '2.2.6.0',
-            'reference' => 'c42125b83a4fa63b187fdf29f9c93cb7733da30c',
+            'pretty_version' => 'v2.2.7',
+            'version' => '2.2.7.0',
+            'reference' => '83ee6f38df0a63106a9e4536e3060458b74ccedb',
             'type' => 'library',
             'install_path' => __DIR__ . '/../tijsverkoyen/css-to-inline-styles',
             'aliases' => array(),
