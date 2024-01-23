@@ -66,7 +66,18 @@ public function addBasket(Request $request) {
         $basket->totalprice = $basket->quantity * request('price');
         $basket->status = 'open';
         $basket->save();
+<<<<<<<< HEAD:option115/app/Http/Controllers/ShowBikesController.php
         return redirect()->back();
+========
+        $bike->save();
+        
+   
+        return Redirect::route('products',['success' => 'Item successfully added to basket!']);
+
+
+    }
+  
+>>>>>>>> upstream/main:option-11/app/Http/Controllers/ShowBikesController.php
 
    
 
