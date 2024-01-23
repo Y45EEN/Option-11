@@ -5,9 +5,9 @@ import NavBar from "@/Components/NavBar";
 
 export default function Checkout({ auth }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        cardNumber: '',
-        expiryDate: '',
-        cvv: '',
+        cardNumber: "",
+        expiryDate: "",
+        cvv: "",
     });
 
     const submit = (e) => {
@@ -24,7 +24,9 @@ export default function Checkout({ auth }) {
         }
 
         if (!expiryDateRegex.test(data.expiryDate)) {
-            alert("Invalid expiry date. Please enter a valid date in MM/YYYY format.");
+            alert(
+                "Invalid expiry date. Please enter a valid date in MM/YYYY format."
+            );
             return;
         }
 
@@ -34,52 +36,80 @@ export default function Checkout({ auth }) {
         }
 
         // If all validations pass, proceed to submit the form
-        post(route('addPayment'), data);
+        post(route("addPayment"), data);
     };
 
     return (
-        <div>
+
+  
+        
+        <body id="checkoutBody">
+            
+            
             <NavBar auth={auth} />
+            <div class="checkoutContainer">
+            <h1 id="checkoutTitle">Checkout Form</h1>
+                <form id="checkoutForm" onSubmit={submit}>
+                    <label
+                        class="checkoutlabel"
+                        style={{ color: "white" }}
+                        htmlFor="cardNumber"
+                    >
+                        Card Number:
+                    </label>
+                    <input
+                        class="inputCheckout"
+                        type="text"
+                        id="cardNumber"
+                        name="cardNumber"
+                        placeholder="Card Number"
+                        required
+                        value={data.cardNumber}
+                        onChange={(e) => setData("cardNumber", e.target.value)}
+                    />
+                    <br />
 
-            <form onSubmit={submit}>
-                <label style={{ color: "white" }} htmlFor="cardNumber">Card Number:</label>
-                <input
-                    type="text"
-                    id="cardNumber"
-                    name="cardNumber"
-                    placeholder="Card Number"
-                    required
-                    value={data.cardNumber}
-                    onChange={(e) => setData('cardNumber', e.target.value)}
-                />
-                <br />
+                    <label
+                        class="checkoutlabel"
+                        style={{ color: "white" }}
+                        htmlFor="expiryDate"
+                    >
+                        Expiry Date (MM/YYYY):
+                    </label>
+                    <input
+                        class="inputCheckout"
+                        type="text"
+                        id="expiryDate"
+                        name="expiryDate"
+                        placeholder="MM/YYYY"
+                        required
+                        value={data.expiryDate}
+                        onChange={(e) => setData("expiryDate", e.target.value)}
+                    />
+                    <br />
 
-                <label style={{ color: "white" }} htmlFor="expiryDate">Expiry Date (MM/YYYY):</label>
-                <input
-                    type="text"
-                    id="expiryDate"
-                    name="expiryDate"
-                    placeholder="MM/YYYY"
-                    required
-                    value={data.expiryDate}
-                    onChange={(e) => setData('expiryDate', e.target.value)}
-                />
-                <br />
+                    <label
+                        class="checkoutLabel"
+                        style={{ color: "white" }}
+                        htmlFor="cvv"
+                    >
+                        CVV:
+                    </label>
+                    <input
+                        class="inputCheckout"
+                        type="text"
+                        id="cvv"
+                        name="cvv"
+                        placeholder="CVV"
+                        required
+                        value={data.cvv}
+                        onChange={(e) => setData("cvv", e.target.value)}
+                    />
+                    <br />
 
-                <label style={{ color: "white" }} htmlFor="cvv">CVV:</label>
-                <input
-                    type="text"
-                    id="cvv"
-                    name="cvv"
-                    placeholder="CVV"
-                    required
-                    value={data.cvv}
-                    onChange={(e) => setData('cvv', e.target.value)}
-                />
-                <br />
-
-                <button style={{ color: "white" }} type="submit">Pay</button>
-            </form>
-        </div>
+                    <button class="checkoutBtn"type="submit">Pay</button>
+                </form>
+            </div>
+        </body>
     );
 }
