@@ -15,7 +15,7 @@ return new class extends Migration
             $table->bigIncrements('adminid')->unsigned();
             $table->string('username');
             $table->string('password');
-            $table->boolean('role');
+        
             $table->timestamps();
         });
     }
