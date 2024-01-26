@@ -1,7 +1,5 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
-import { useState } from 'react'
-import { router } from '@inertiajs/react'
+import React, { useState } from "react";
+import { AnimatePresence } from 'framer-motion';
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import { Link, useForm, usePage } from "@inertiajs/react";
 import { useEffect } from "react";

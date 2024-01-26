@@ -1,34 +1,74 @@
+import { motion } from "framer-motion";
 import React, { useEffect } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { Head, Link, useForm } from '@inertiajs/react';
 import NavBar from "@/Components/NavBar";
-const Login = ({ status,auth}) => {
-  const { data, setData, post, processing, errors, reset } = useForm({
-    email: '',
-    password: '',
-    remember: false,
-  });
+import Backdrop from "@/Components/Backdrop";
 
-  useEffect(() => {
-    return () => {
-      reset('password');
-    };
-  }, []);
+  
 
-  const submit = (e) => {
-    e.preventDefault();
+const Login = ({ handleClose,auth }) => {
 
-    post(route('login'));
-  };
+    const { data, setData, post, processing, errors, reset } = useForm({
+        email: '',
+        password: '',
+        remember: false,
+      });
+      //manipulate this to get different animations of pop in
+      const dropIn = {
+        hidden: {
+          
+          opacity: 0,
+        },
+        visible: {
+          y: "10vh",
+          opacity: 1,
+          transition: {
+            duration: 2,
+            type: "spring",
+            damping: 25,
+            stiffness: 500,
+          },
+        },
+        exit: {
+        
+          opacity: 0,
+        },
+      };
+    
+    
+      useEffect(() => {
+        return () => {
+          reset('password');
+        };
+      }, []);
+    
+      const submit = (e) => {
+        e.preventDefault();
+    
+        post(route('login'));
+      };
+    
 
-  return (
-<div>
-    <NavBar  auth= {auth}  />
-
-    <Container
+    return (
+    
+      <Backdrop onClick={handleClose} initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}>
+        
+          <motion.div
+            onClick={(e) => e.stopPropagation()}  
+            className="modal orange-gradient"
+            variants={dropIn}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <Container
       className="d-flex align-items-center justify-content-center "
       style={{ minHeight: '75vh' }}
     >
+       
       <Form
         className="p-5 rounded shadow-sm bg-dark text-light"
         onSubmit={submit}
@@ -90,8 +130,11 @@ const Login = ({ status,auth}) => {
         </div>
       </Form>
     </Container>
-    </div>
-  );
-};
+            <button onClick={handleClose}>Close</button>
+          </motion.div>
+      </Backdrop>
+    );
+  };
 
-export default Login;
+  
+  export default Login;

@@ -23,6 +23,8 @@ createInertiaApp({
             <>
             
                 <App {...props} />
+
+
             </>
         );
     },

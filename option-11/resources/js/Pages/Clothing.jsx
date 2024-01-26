@@ -1,6 +1,7 @@
 // Desc: BikeParts page for the user to view all bike parts
 // We use react because we are using react components
-import React from "react";
+import React, { useState } from "react";
+import { AnimatePresence } from 'framer-motion';
 // We use inertia link to link to other pages
 import { InertiaLink } from '@inertiajs/inertia-react';
 // We import the bikepart component to use in the page

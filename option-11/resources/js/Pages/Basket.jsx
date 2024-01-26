@@ -3,7 +3,8 @@ import { Head, useForm } from "@inertiajs/react";
 import React, { useState, useEffect } from "react";
 import NavBar from "@/Components/NavBar";
 import { Inertia } from "@inertiajs/inertia";
-
+import { AnimatePresence } from 'framer-motion';
+import Login from '@/Pages/Auth/Login';
 export default function Basket({ auth, basket, totalprice, bikes }) {
     const { data, setData, post } = useForm({
         basketid: null,
@@ -56,10 +57,25 @@ export default function Basket({ auth, basket, totalprice, bikes }) {
     const calculateTotalPrice = (price, quantity) => {
         return price * quantity;
     };
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+      setModalOpen(true);
+    };
+  
+    const closeModal = () => {
+      setModalOpen(false);
+    };
 
     return (
         <>
-            <NavBar auth={auth} />
+        
+             <NavBar auth={auth} openModal={openModal} />
+            <AnimatePresence initial={false} mode='wait'>
+          {modalOpen && (
+            <Login modalOpen={modalOpen} handleClose={closeModal} />
+          )}
+        </AnimatePresence>
 
             <Head title="Basket" />
 

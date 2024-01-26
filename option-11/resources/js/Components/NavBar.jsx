@@ -2,7 +2,7 @@ import { Container, Nav, Navbar, Image, NavDropdown } from "react-bootstrap";
 import krakenLogo from "../../assets/Kraken_logo.png";
 import basketIcon from "../../assets/basket-icon.png";
 
-const NavBar = ({ auth }) => {
+const NavBar = ({ auth, openModal}) => {
     let loggedIn = false;
 
     return (
@@ -56,7 +56,8 @@ const NavBar = ({ auth }) => {
                         ) : (
                             <Nav.Link
                                 className="text-black bg-info rounded-2 px-4 "
-                                href="/login"
+                                
+                                onClick={openModal}
                             >
                                 Login
                             </Nav.Link>

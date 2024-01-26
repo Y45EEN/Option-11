@@ -1,8 +1,9 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { useForm, Link } from "@inertiajs/react";
-import React from "react";
-import NavBar from "@/Components/NavBar";
 
+import NavBar from "@/Components/NavBar";
+import React, { useState } from "react";
+import { AnimatePresence } from 'framer-motion';
 export default function Checkout({ auth }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         cardNumber: "",

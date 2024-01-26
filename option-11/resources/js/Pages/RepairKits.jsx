@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { AnimatePresence } from 'framer-motion';
 import { InertiaLink } from "@inertiajs/inertia-react";
 import RepairKit from "../components/RepairKit";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";

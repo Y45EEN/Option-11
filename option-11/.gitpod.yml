@@ -1,0 +1,6 @@
+image:
+  file: .gitpod.dockerfile
+
+tasks:
+  - command: php artisan serve --host=127.0.0.1 --port=8080
+    openMode: tab

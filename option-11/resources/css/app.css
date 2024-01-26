@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import-normalize;
 @font-face {
     font-family: "Koulen";
     src: url("../fonts/Koulen-Regular.ttf") format("truetype");
@@ -17,6 +18,29 @@ body {
      border-radius: 5px;
 
 
+}
+/*backdrop*/
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #000000e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: hidden;
+}
+
+.modal {
+ 
+  margin: auto;
+  padding: 0 2rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer {
