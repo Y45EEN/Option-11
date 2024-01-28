@@ -7,7 +7,7 @@ import { Head, useForm } from "@inertiajs/react";
 import AnimateModal from '@/Components/AnimateModal';
 import NavBar from "@/Components/NavBar";
 
-const OrdersHistory = ({ auth, orders, bikes, basketitems, total }) => {
+const OrdersHistory = ({ auth, orders, bikes, basketitems, baskIcon }) => {
 
         
 
@@ -35,7 +35,7 @@ const OrdersHistory = ({ auth, orders, bikes, basketitems, total }) => {
 
     return (
         <>
-        <AnimateModal auth={auth}>  
+        <AnimateModal auth={auth} baskIcon={baskIcon}>  
 
         <Head title="Basket" />
 

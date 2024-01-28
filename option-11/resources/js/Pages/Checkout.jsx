@@ -5,7 +5,7 @@ import NavBar from "@/Components/NavBar";
 import React, { useState } from "react";
 import { AnimatePresence } from 'framer-motion';
 import AnimateModal from '@/Components/AnimateModal';
-export default function Checkout({ auth }) {
+export default function Checkout({ auth,baskIcon }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         cardNumber: "",
         expiryDate: "",
@@ -48,7 +48,7 @@ export default function Checkout({ auth }) {
         <body id="checkoutBody">
             
             
-            <AnimateModal auth={auth}>   
+            <AnimateModal auth={auth} baskIcon={baskIcon}>   
             <div class="checkoutContainer">
             <h1 id="checkoutTitle">Checkout Form</h1>
                 <form id="checkoutForm" onSubmit={submit}>

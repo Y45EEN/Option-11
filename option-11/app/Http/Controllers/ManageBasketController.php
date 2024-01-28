@@ -77,7 +77,8 @@ class ManageBasketController extends Controller
 
 
     }
-
+    
+    
     return Inertia::render('Basket',['basket' => $basket, 'totalprice' => $totalPrice, 'bikes' => $bikes ]);
 
     

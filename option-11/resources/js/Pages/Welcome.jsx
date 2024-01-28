@@ -10,13 +10,13 @@ import Login from '@/Pages/Auth/Login'; // Import your Modal component
 
 import mainBike from '../../assets/main-img.png';
 
-const Home = ({ auth }) => {
+const Home = ({ auth,baskIcon }) => {
 
 
   return (
     <>
       <main>
-      <AnimateModal auth={auth}>
+      <AnimateModal auth={auth} baskIcon={baskIcon}>
        
         <MainImage
           imageSrc={mainBike}

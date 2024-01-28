@@ -3,7 +3,7 @@ import { Head, Link } from '@inertiajs/react';
 import Dropdown from '@/Components/Dropdown';
 import NavBar from "@/Components/NavBar";
 import AnimateModal from '@/Components/AnimateModal';
-export default function Dashboard({ auth }) {
+export default function Dashboard({ auth,baskIcon }) {
 
     const handleDeleteConfirmation = (e) => {
         if (window.confirm('Are you sure you wish to delete your account?')) {
@@ -15,7 +15,7 @@ export default function Dashboard({ auth }) {
 
     return (
         <>
-              <AnimateModal auth={auth}>       
+              <AnimateModal auth={auth} baskIcon={baskIcon}>       
             <div className='d-flex justify-content-evenly mt-5'>
 
 

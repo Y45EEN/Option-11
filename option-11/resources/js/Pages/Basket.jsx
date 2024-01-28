@@ -6,7 +6,7 @@ import { Inertia } from "@inertiajs/inertia";
 import { AnimatePresence } from 'framer-motion';
 import Login from '@/Pages/Auth/Login';
 import AnimateModal from '@/Components/AnimateModal';
-export default function Basket({ auth, basket, totalprice, bikes }) {
+export default function Basket({ auth, basket, totalprice, bikes,baskIcon }) {
     const { data, setData, post } = useForm({
         basketid: null,
     });
@@ -63,7 +63,7 @@ export default function Basket({ auth, basket, totalprice, bikes }) {
     return (
         <>
         
-        <AnimateModal auth={auth}>
+        <AnimateModal auth={auth} baskIcon={baskIcon}>
              
            
 

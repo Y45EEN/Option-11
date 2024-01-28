@@ -16,11 +16,11 @@ import NavBar from "@/Components/NavBar";
 // In this case, this is a page, so we create a function called BikeParts
 // In the page bikeparts, we pass in the props auth and bikeparts, which we get from the controller, to use in the page
 
-const Clothing = ({ auth, clothes }) => {
+const Clothing = ({ auth, clothes,baskIcon }) => {
 
     return (
         <div>
-               <AnimateModal auth={auth}>  
+               <AnimateModal auth={auth} baskIcon={baskIcon}>  
 
             <Clothes clothes={clothes}  auth={auth} />
 

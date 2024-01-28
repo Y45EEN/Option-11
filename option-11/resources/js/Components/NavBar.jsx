@@ -2,7 +2,7 @@ import { Container, Nav, Navbar, Image, NavDropdown } from "react-bootstrap";
 import krakenLogo from "../../assets/Kraken_logo.png";
 import basketIcon from "../../assets/basket-icon.png";
 
-const NavBar = ({ auth, openModal}) => {
+const NavBar = ({ auth, openModal,baskIcon}) => {
     let loggedIn = false;
 
     return (
@@ -42,10 +42,12 @@ const NavBar = ({ auth, openModal}) => {
                         </Nav.Link>
                         {auth.user ? (
                             <>
-                                {" "}
-                                <Nav.Link className="px-4" href="/basket">
+                                 <Nav.Link className="px-4" href="/basket">
+                                    <div className="rounded-circle bg-danger d-flex justify-content-center align-items-center" style={{width:"1.5rem", height:"1.5rem", position: "absolute", top: "22%", right: "22.5%", }}><span style={{ color: "#fff", fontSize: "1.2rem" }}>{baskIcon.basketCount}</span></div>
+                                
                                     <Image src={basketIcon} rounded fluid className="basket-icon" />
                                 </Nav.Link>
+                               
                                 <Nav.Link
                                     className="text-black bg-info rounded-2 px-4 "
                                     href="/dashboard"

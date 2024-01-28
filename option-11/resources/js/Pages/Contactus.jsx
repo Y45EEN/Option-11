@@ -1,11 +1,10 @@
 import React from "react";
 import NavBar from "@/Components/NavBar";
 import AnimateModal from '@/Components/AnimateModal';
-import { Container, Form, Button, Row, Col } from "react-bootstrap";
-const ContactUs = ({ auth }) => {
+const ContactUs = ({ auth,baskIcon }) => {
     return (
         <div>
-           <AnimateModal auth={auth}>  
+           <AnimateModal auth={auth} baskIcon={baskIcon}>  
             <>
                 <style>
                

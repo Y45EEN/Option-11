@@ -14,12 +14,12 @@ import Login from '@/Pages/Auth/Login';
 // In this case, this is a page, so we create a function called BikeParts
 // In the page bikeparts, we pass in the props auth and bikeparts, which we get from the controller, to use in the page
 
-const BikeParts = ({ auth, bikePart }) => {
+const BikeParts = ({ auth, bikePart,baskIcon }) => {
     
     return (
         <div>
-           <AnimateModal auth={auth}>
-          
+           <AnimateModal auth={auth} baskIcon={baskIcon}>
+           
 
             <BikePart bikePart={bikePart} auth={auth} />
 

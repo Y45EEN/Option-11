@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Models\Basket;
+use App\Models\Bikes;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -33,6 +35,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+      
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import NavBar from "@/Components/NavBar";
 import AnimateModal from '@/Components/AnimateModal';
 import InputError from "@/Components/InputError";
-export default function UpdateAccount({ auth }) {
+export default function UpdateAccount({ auth,baskIcon }) {
 
 //below is a form template, needs to be replaced
 const { data, setData, post, processing, errors, reset } = useForm({
@@ -34,7 +34,7 @@ return (
 
     <div>
 
-<AnimateModal auth={auth}>   
+<AnimateModal auth={auth} baskIcon={baskIcon}>   
 
 <Form
             className="p-5 rounded shadow-sm bg-dark text-light"

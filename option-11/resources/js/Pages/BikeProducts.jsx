@@ -11,11 +11,11 @@ import NavBar from "@/Components/NavBar";
 import Login from '@/Pages/Auth/Login';
 import AnimateModal from '@/Components/AnimateModal';
 
-const BikeProducts = ({ auth, bikes }) => {
+const BikeProducts = ({ auth, bikes,baskIcon }) => {
   
   return (
     <div>
-       <AnimateModal auth={auth}>
+       <AnimateModal auth={auth} baskIcon={baskIcon}>
      
    
 
