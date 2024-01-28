@@ -1,7 +1,7 @@
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import { Link, useForm } from "@inertiajs/react";
 import { useEffect } from "react";
-
+import AnimateModal from '@/Components/AnimateModal';
 import InputError from "@/Components/InputError";
 
 import NavBar from "@/Components/NavBar";
@@ -28,7 +28,7 @@ const Register = ({auth}) => {
 
     return (
         <div>
-            <NavBar auth={auth} />
+           <AnimateModal auth={auth}>  
 
             <Container
                 className="d-flex align-items-center justify-content-center "
@@ -200,6 +200,7 @@ const Register = ({auth}) => {
                     </div>
                 </Form>
             </Container>
+            </AnimateModal>
         </div>
     );
 };

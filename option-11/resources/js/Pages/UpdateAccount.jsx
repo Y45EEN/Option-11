@@ -4,7 +4,7 @@ import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import { Link, useForm, usePage } from "@inertiajs/react";
 import { useEffect } from "react";
 import NavBar from "@/Components/NavBar";
-
+import AnimateModal from '@/Components/AnimateModal';
 import InputError from "@/Components/InputError";
 export default function UpdateAccount({ auth }) {
 
@@ -34,7 +34,7 @@ return (
 
     <div>
 
-<NavBar auth={auth} />
+<AnimateModal auth={auth}>   
 
 <Form
             className="p-5 rounded shadow-sm bg-dark text-light"
@@ -200,6 +200,7 @@ return (
    
     
         </Form>
+        </AnimateModal>
     
     </div>
 

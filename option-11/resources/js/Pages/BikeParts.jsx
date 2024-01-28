@@ -6,7 +6,7 @@ import { InertiaLink } from '@inertiajs/inertia-react';
 // We import the bikepart component to use in the page
 import BikePart from "@/Components/BikePart";  // Updated import name
 import { AnimatePresence, motion } from 'framer-motion';
-
+import AnimateModal from '@/Components/AnimateModal';
 // We import the navbar component to use the navbar
 import NavBar from "@/Components/NavBar";
 import Login from '@/Pages/Auth/Login';
@@ -15,27 +15,16 @@ import Login from '@/Pages/Auth/Login';
 // In the page bikeparts, we pass in the props auth and bikeparts, which we get from the controller, to use in the page
 
 const BikeParts = ({ auth, bikePart }) => {
-    const [modalOpen, setModalOpen] = useState(false);
-
-    const openModal = () => {
-      setModalOpen(true);
-    };
-  
-    const closeModal = () => {
-      setModalOpen(false);
-    };
+    
     return (
         <div>
-            <NavBar auth={auth} openModal={openModal} />
+           <AnimateModal auth={auth}>
+          
 
-            <BikePart bikePart={bikePart} />
+            <BikePart bikePart={bikePart} auth={auth} />
 
             <InertiaLink className="text-white" href={route('basket')}>Go to Basket</InertiaLink>
-            <AnimatePresence initial={false} mode='wait'>
-          {modalOpen && (
-            <Login modalOpen={modalOpen} handleClose={closeModal} />
-          )}
-        </AnimatePresence>
+            </AnimateModal>
         </div>
     );
 }

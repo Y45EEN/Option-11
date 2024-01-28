@@ -8,7 +8,7 @@ import { InertiaLink } from '@inertiajs/inertia-react';
 import Clothes from "@/Components/Clothes";  // Updated import name
 // We import the authenticated layout to use the navbar
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-
+import AnimateModal from '@/Components/AnimateModal';
 // We import the navbar component to use the navbar
 import NavBar from "@/Components/NavBar";
 
@@ -20,11 +20,12 @@ const Clothing = ({ auth, clothes }) => {
 
     return (
         <div>
-            <NavBar auth={auth} />
+               <AnimateModal auth={auth}>  
 
-            <Clothes clothes={clothes} />
+            <Clothes clothes={clothes}  auth={auth} />
 
             <InertiaLink className="text-white" href={route('basket')}>Go to Basket</InertiaLink>
+            </AnimateModal>
         </div>
     );
 }

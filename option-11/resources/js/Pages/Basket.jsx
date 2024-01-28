@@ -5,6 +5,7 @@ import NavBar from "@/Components/NavBar";
 import { Inertia } from "@inertiajs/inertia";
 import { AnimatePresence } from 'framer-motion';
 import Login from '@/Pages/Auth/Login';
+import AnimateModal from '@/Components/AnimateModal';
 export default function Basket({ auth, basket, totalprice, bikes }) {
     const { data, setData, post } = useForm({
         basketid: null,
@@ -57,25 +58,14 @@ export default function Basket({ auth, basket, totalprice, bikes }) {
     const calculateTotalPrice = (price, quantity) => {
         return price * quantity;
     };
-    const [modalOpen, setModalOpen] = useState(false);
-
-    const openModal = () => {
-      setModalOpen(true);
-    };
   
-    const closeModal = () => {
-      setModalOpen(false);
-    };
 
     return (
         <>
         
-             <NavBar auth={auth} openModal={openModal} />
-            <AnimatePresence initial={false} mode='wait'>
-          {modalOpen && (
-            <Login modalOpen={modalOpen} handleClose={closeModal} />
-          )}
-        </AnimatePresence>
+        <AnimateModal auth={auth}>
+             
+           
 
             <Head title="Basket" />
 
@@ -152,6 +142,7 @@ export default function Basket({ auth, basket, totalprice, bikes }) {
             >
                 ^ Back to Top
             </button>
+            </AnimateModal>
         </>
     );
 }

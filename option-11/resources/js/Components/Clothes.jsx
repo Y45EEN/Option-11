@@ -2,7 +2,7 @@ import { useForm } from "@inertiajs/react";
 import React, { useState } from "react";
 import InputError from "@/Components/InputError";
 
-const Clothes = ({ clothes, success }) => {
+const Clothes = ({ clothes, success,auth,openModal }) => {
     const { data, setData, post, processing, errors, reset } = useForm({
         clothingid_hidden: "",
         quantity: "",
@@ -14,6 +14,11 @@ const Clothes = ({ clothes, success }) => {
         e.preventDefault();
         post("/addBasketClothing", data);
     };
+    const onClickPreventDefault= (e) => {
+        openModal();
+        e.preventDefault();
+        
+      };
 
     const clothesList = clothes.map((clothing) => (
         <div
@@ -47,9 +52,18 @@ const Clothes = ({ clothes, success }) => {
                     </div>
                 </div>
                 <div className="card-footer">
-                    <button type="submit" className="btn btn-dark text-dark">
-                        Add to basket
-                    </button>
+                {auth.user ? (
+                     
+                     <button type="submit" className="btn btn-dark text-dark">
+                     Add to basket
+                 </button>
+                          
+                        ) : (
+                          
+                            <button type="submit" onClick={onClickPreventDefault} className="btn btn-dark text-dark">
+                            Add to basket
+                        </button>
+                        )}
                 </div>
             </div>
         </div>

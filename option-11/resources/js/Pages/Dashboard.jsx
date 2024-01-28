@@ -2,7 +2,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link } from '@inertiajs/react';
 import Dropdown from '@/Components/Dropdown';
 import NavBar from "@/Components/NavBar";
-
+import AnimateModal from '@/Components/AnimateModal';
 export default function Dashboard({ auth }) {
 
     const handleDeleteConfirmation = (e) => {
@@ -15,8 +15,11 @@ export default function Dashboard({ auth }) {
 
     return (
         <>
-            <NavBar auth={auth} />
+              <AnimateModal auth={auth}>       
             <div className='d-flex justify-content-evenly mt-5'>
+
+
+
 
                 <div className="d-flex flex-col space-y-3">
                     <div className="sm:flex sm:items-center sm:ms-6 ">
@@ -67,6 +70,7 @@ export default function Dashboard({ auth }) {
                 </div>
 
             </div>
+            </AnimateModal>     
         </>
     );
 }

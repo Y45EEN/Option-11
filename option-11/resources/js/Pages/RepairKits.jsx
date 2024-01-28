@@ -4,15 +4,15 @@ import { InertiaLink } from "@inertiajs/inertia-react";
 import RepairKit from "../components/RepairKit";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import NavBar from "@/Components/NavBar";
-
+import AnimateModal from '@/Components/AnimateModal';
 const RepairKits = ({ auth, repairKit }) => {
     return (
         <div>
-            <NavBar auth={auth} />
-
-            <RepairKit repairKit={repairKit} />
+             <AnimateModal auth={auth}> 
+            <RepairKit repairKit={repairKit} auth={auth} />
 
             <InertiaLink className="text-white" href={route("basket")}>Go to Basket</InertiaLink>
+            </AnimateModal>
         </div>
     );
 }

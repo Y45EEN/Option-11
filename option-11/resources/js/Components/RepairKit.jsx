@@ -2,7 +2,7 @@ import { useForm } from "@inertiajs/react";
 import React, { useState } from "react";
 import InputError from "@/Components/InputError";
 
-const RepairKit = ({ repairKit, success }) => {
+const RepairKit = ({ repairKit, success,auth,openModal }) => {
     const { data, setData, post, processing, errors, reset } = useForm({
         repairkitsid_hidden: "",
         quantity: "",
@@ -14,6 +14,12 @@ const RepairKit = ({ repairKit, success }) => {
         e.preventDefault();
         post("/addBasketRepairkit", data);
     };
+
+    const onClickPreventDefault= (e) => {
+        openModal();
+        e.preventDefault();
+        
+      };
 
     const repairKitList = repairKit.map((kit) => (
         <div
@@ -53,9 +59,18 @@ const RepairKit = ({ repairKit, success }) => {
                     </div>
                 </div>
                 <div className="card-footer">
-                    <button type="submit" className="btn btn-dark text-dark">
-                        Add to basket
-                    </button>
+                {auth.user ? (
+                     
+                     <button type="submit" className="btn btn-dark text-dark">
+                     Add to basket
+                 </button>
+                          
+                        ) : (
+                          
+                            <button type="submit" onClick={onClickPreventDefault} className="btn btn-dark text-dark">
+                            Add to basket
+                        </button>
+                        )}
                 </div>
             </div>
         </div>

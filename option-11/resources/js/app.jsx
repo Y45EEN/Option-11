@@ -4,8 +4,9 @@ import "../css/app.css";
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
-import NavBar from "./Components/NavBar";
-
+import Footer from "./Components/Footer";
+import AdminLogin from "@/Pages/Auth/AdminLogin";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
 createInertiaApp({
@@ -19,12 +20,17 @@ createInertiaApp({
         const root = createRoot(el);
 
         root.render(
-           
             <>
-            
-                <App {...props} />
+            <App {...props} />
+                <Router>
+                    <Routes>
+              
+                        <Route path="/adminLogin" component={AdminLogin} />
+                    </Routes>
+                    
 
-
+                    <Footer />
+                </Router>
             </>
         );
     },

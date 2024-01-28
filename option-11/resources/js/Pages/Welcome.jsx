@@ -4,26 +4,20 @@ import NavBar from '@/Components/NavBar';
 import MainImage from '@/Components/MainImage';
 import Categories from '@/Components/Categories';
 import MainPgProducts from '@/Components/MainPgProducts';
+import AnimateModal from '@/Components/AnimateModal';
 import Footer from '@/Components/Footer';
 import Login from '@/Pages/Auth/Login'; // Import your Modal component
 
 import mainBike from '../../assets/main-img.png';
 
 const Home = ({ auth }) => {
-  const [modalOpen, setModalOpen] = useState(false);
 
-  const openModal = () => {
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
 
   return (
     <>
       <main>
-        <NavBar auth={auth} openModal={openModal} />
+      <AnimateModal auth={auth}>
+       
         <MainImage
           imageSrc={mainBike}
           altText="bike sign"
@@ -32,14 +26,18 @@ const Home = ({ auth }) => {
         />
         <Categories />
         <MainPgProducts />
+
+        
+       
       
-        <AnimatePresence initial={false} mode='wait'>
-          {modalOpen && (
-            <Login modalOpen={modalOpen} handleClose={closeModal} />
-          )}
-        </AnimatePresence>
+       
+     
+      
+        </AnimateModal>
       </main>
-      <Footer />
+
+   
+  
     </>
   );
 };

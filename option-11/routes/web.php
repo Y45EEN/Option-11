@@ -37,6 +37,9 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/contactUs', function () {
+    return Inertia::render('Contactus');
+});
 Route::get('/updateAccount', function () {
 
    
@@ -84,40 +87,31 @@ Route::get('/RepairBooking', [ShowRepairBookingController::class, 'showAll'])->n
 
 Route::get('/Orders', [ShowOrdersController::class, 'showAll'])->name('orders');
 
-
-
-
-
+Route::group(['middleware' => ['admin']], function () {
 
     
 
-   
+    Route::get('/adminDashboard', [AdminDashboardController::class, 'dashboard'])->name('adminDashboard');
 
 
 
-          
-
-    Route::get('adminLogin', [AdminLoginController::class, 'create'])->name('adminLogin');
-    Route::post('adminLogin', [AdminLoginController::class, 'store']);
-    
-
-         
-  
-  
-    
-
-   
-        Route::group(['middleware' => ['admin']], function () {
-
-          
-
-        Route::get('/adminDashboard', [AdminDashboardController::class, 'dashboard'])->name('adminDashboard');
-    
-             
-      
-        });
         
-    
+
+});
+Route::group(['middleware' => ['admin.guest']], function () {
+
+
+
+
+    Route::get('/adminLogin', [AdminLoginController::class, 'create'])->name('adminLogin');
+    Route::post('/adminLogin', [AdminLoginController::class, 'store']);
+
+
+
+        
+
+}); 
+
 
 Route::middleware('auth')->group(function () {
   

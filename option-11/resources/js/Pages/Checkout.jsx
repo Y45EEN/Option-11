@@ -4,6 +4,7 @@ import { useForm, Link } from "@inertiajs/react";
 import NavBar from "@/Components/NavBar";
 import React, { useState } from "react";
 import { AnimatePresence } from 'framer-motion';
+import AnimateModal from '@/Components/AnimateModal';
 export default function Checkout({ auth }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         cardNumber: "",
@@ -47,7 +48,7 @@ export default function Checkout({ auth }) {
         <body id="checkoutBody">
             
             
-            <NavBar auth={auth} />
+            <AnimateModal auth={auth}>   
             <div class="checkoutContainer">
             <h1 id="checkoutTitle">Checkout Form</h1>
                 <form id="checkoutForm" onSubmit={submit}>
@@ -111,6 +112,7 @@ export default function Checkout({ auth }) {
                     <button class="checkoutBtn"type="submit">Pay</button>
                 </form>
             </div>
+            </AnimateModal>
         </body>
     );
 }

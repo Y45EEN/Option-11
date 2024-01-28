@@ -1,140 +1,145 @@
 import { motion } from "framer-motion";
-import React, { useEffect } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
-import { Head, Link, useForm } from '@inertiajs/react';
+import React, { useEffect } from "react";
+import { Container, Form, Button } from "react-bootstrap";
+import { Head, Link, useForm } from "@inertiajs/react";
 import NavBar from "@/Components/NavBar";
 import Backdrop from "@/Components/Backdrop";
 
-  
-
-const Login = ({ handleClose,auth }) => {
-
+const Login = ({ handleClose, auth }) => {
     const { data, setData, post, processing, errors, reset } = useForm({
-        email: '',
-        password: '',
+        email: "",
+        password: "",
         remember: false,
-      });
-      //manipulate this to get different animations of pop in
-      const dropIn = {
+    });
+    //manipulate this to get different animations of pop in
+    const dropIn = {
         hidden: {
-          
-          opacity: 0,
+          y: "-100vh",
+            opacity: 0,
         },
         visible: {
-          y: "10vh",
-          opacity: 1,
-          transition: {
-            duration: 2,
-            type: "spring",
-            damping: 25,
-            stiffness: 500,
-          },
+            y: "1vh",
+            opacity: 1,
+            transition: {
+                duration: 0.1,
+                type: "spring",
+                damping: 27,
+                stiffness: 400,
+            },
         },
         exit: {
-        
-          opacity: 0,
+            y: "1vh",
+            opacity: 0,
         },
-      };
-    
-    
-      useEffect(() => {
+    };
+
+    useEffect(() => {
         return () => {
-          reset('password');
+            reset("password");
         };
-      }, []);
-    
-      const submit = (e) => {
+    }, []);
+
+    const submit = (e) => {
         e.preventDefault();
-    
-        post(route('login'));
-      };
-    
+
+        post(route("login"));
+    };
 
     return (
-    
-      <Backdrop onClick={handleClose} initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}>
-        
-          <motion.div
-            onClick={(e) => e.stopPropagation()}  
-            className="modal orange-gradient"
-            variants={dropIn}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            <Container
-      className="d-flex align-items-center justify-content-center "
-      style={{ minHeight: '75vh' }}
-    >
-       
-      <Form
-        className="p-5 rounded shadow-sm bg-dark text-light"
-        onSubmit={submit}
-      >
-        <Head title="Log in" />
+        <Backdrop
+            onClick={handleClose}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
+            <motion.div
+                className="d-flex align-items-center justify-content-center "
+                style={{ minHeight: "35vh" }}
+                onClick={(e) => e.stopPropagation()}
+                variants={dropIn}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                margin="auto"
+            >
+                <Form
+                    className="p-5 rounded shadow-sm bg-dark text-light"
+                    onSubmit={submit}
+                >
+                    <Head title="Log in" />
 
-        {status && (
-          <div className="mb-4 font-medium text-sm text-green-600">{status}</div>
-        )}
+                    <h2 className="text-center mb-4 pt-4 h2">Log in</h2>
 
-        <div>
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            name="email"
-            value={data.email}
-            className="mt-1 block w-full"
-            autoComplete="username"
-            onChange={(e) => setData('email', e.target.value)}
-          />
-          <Form.Text className="text-danger">{errors.email}</Form.Text>
-        </div>
+                    {status && (
+                        <div className="mb-4 font-medium text-sm text-green-600">
+                            {status}
+                        </div>
+                    )}
 
-        <div className="mt-4">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            name="password"
-            value={data.password}
-            autoComplete="current-password"
-            onChange={(e) => setData('password', e.target.value)}
-          />
-          <Form.Text className="text-danger">{errors.password}</Form.Text>
-        </div>
+                    <div>
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control
+                            type="email"
+                            name="email"
+                            value={data.email}
+                            className="mt-1 block w-full"
+                            autoComplete="username"
+                            onChange={(e) => setData("email", e.target.value)}
+                        />
+                        <Form.Text className="text-danger">
+                            {errors.email}
+                        </Form.Text>
+                    </div>
 
-        <div className="block mt-4">
-          <Form.Check
-            type="checkbox"
-            label="Remember me"
-            name="remember"
-            checked={data.remember}
-            onChange={(e) => setData('remember', e.target.checked)}
-          />
-        </div>
+                    <div className="mt-4">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            name="password"
+                            value={data.password}
+                            autoComplete="current-password"
+                            onChange={(e) =>
+                                setData("password", e.target.value)
+                            }
+                        />
+                        <Form.Text className="text-danger">
+                            {errors.password}
+                        </Form.Text>
+                    </div>
 
-        <div className="flex items-center justify-end mt-4">
-            <Link href="/register" className="link-info text-center">
-                Not Registered? Click here to sign-up!
-            </Link>
+                    <div className="block mt-4">
+                        <Form.Check
+                            type="checkbox"
+                            label="Remember me"
+                            name="remember"
+                            checked={data.remember}
+                            onChange={(e) =>
+                                setData("remember", e.target.checked)
+                            }
+                        />
+                    </div>
 
-          <Button
-            variant="primary"
-            type="submit"
-            className="ms-4"
-            disabled={processing}
-          >
-            Log in
-          </Button>
-        </div>
-      </Form>
-    </Container>
-            <button onClick={handleClose}>Close</button>
-          </motion.div>
-      </Backdrop>
+                    <div className="flex items-center justify-end mt-4">
+                        <Link
+                            href="/register"
+                            className="link-info text-center"
+                        >
+                            Not Registered? Click here to sign-up!
+                        </Link>
+
+                        <Button
+                            variant="primary"
+                            type="submit"
+                            className="ms-4"
+                            disabled={processing}
+                        >
+                            Log in
+                        </Button>
+                    </div>
+                </Form>
+            </motion.div>
+        </Backdrop>
     );
-  };
+};
 
-  
-  export default Login;
+export default Login;

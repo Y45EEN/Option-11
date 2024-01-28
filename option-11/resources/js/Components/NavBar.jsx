@@ -30,7 +30,7 @@ const NavBar = ({ auth, openModal}) => {
                         </NavDropdown>
                         <Nav.Link
                             className="text-grey  "
-                            href="/contactus"
+                            href="/contactUs"
                         >
                             Contact us
                         </Nav.Link>
