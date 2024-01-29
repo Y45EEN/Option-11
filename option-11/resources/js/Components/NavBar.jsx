@@ -4,6 +4,7 @@ import basketIcon from "../../assets/basket-icon.png";
 
 const NavBar = ({ auth, openModal, baskIcon }) => {
     const itemBasket = () => {
+        //onnly shows the icon if there is an item in the basket
         if (baskIcon.basketCount > 0) {
             return (
                 <div
@@ -12,8 +13,9 @@ const NavBar = ({ auth, openModal, baskIcon }) => {
                         width: "1.5rem",
                         height: "1.5rem",
                         position: "absolute",
-                        top: "22%",
-                        right: "22.5%",
+                        top: "20%",  // Adjust the top value as needed
+        right: "28%", // Adjust the right value as needed
+        transform: "translate(50%, -50%)", // Center the div
                     }}
                 >
                     <span style={{ color: "#fff", fontSize: "1.2rem" }}>
@@ -74,8 +76,9 @@ const NavBar = ({ auth, openModal, baskIcon }) => {
                         </Nav.Link>
                         {auth.user ? (
                             <>
-                                <Nav.Link className="px-4" href="/basket">
-                                    {itemBasket()}
+                                <Nav.Link className="px-4 position-relative" href="/basket">
+                                    <div>{itemBasket()}</div>
+                                    
                                     <Image
                                         src={basketIcon}
                                         rounded

@@ -55,9 +55,7 @@ export default function Basket({ auth, basket, totalprice, bikes,baskIcon }) {
         }
     }, [data.basketid]);
 
-    const calculateTotalPrice = (price, quantity) => {
-        return price * quantity;
-    };
+  
   
 
     return (
