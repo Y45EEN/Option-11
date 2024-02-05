@@ -16,6 +16,7 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ShowRepairBookingController;
 use App\Http\Controllers\ShowOrdersController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminEditUsersController;
 use App\Http\Controllers\Auth\AdminLoginController;
 /*
 |--------------------------------------------------------------------------
@@ -90,8 +91,10 @@ Route::get('/Orders', [ShowOrdersController::class, 'showAll'])->name('orders');
 Route::group(['middleware' => ['admin']], function () {
 
     
-
+    
     Route::get('/adminDashboard', [AdminDashboardController::class, 'dashboard'])->name('adminDashboard');
+
+    Route::get('/adminEditUsers', [AdminEditUsersController::class, 'show'])->name('adminEditUsers');
 
 
 
