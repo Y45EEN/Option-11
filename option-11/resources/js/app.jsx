@@ -22,15 +22,7 @@ createInertiaApp({
         root.render(
             <>
             <App {...props} />
-                <Router>
-                    <Routes>
-              
-                        <Route path="/adminLogin" component={AdminLogin} />
-                    </Routes>
-                    
-
-                    <Footer />
-                </Router>
+                
             </>
         );
     },

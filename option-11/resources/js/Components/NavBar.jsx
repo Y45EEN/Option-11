@@ -13,9 +13,8 @@ const NavBar = ({ auth, openModal, baskIcon }) => {
                         width: "1.5rem",
                         height: "1.5rem",
                         position: "absolute",
-                        top: "20%",  // Adjust the top value as needed
-        right: "28%", // Adjust the right value as needed
-        transform: "translate(50%, -50%)", // Center the div
+                        top: "0px",  // Adjust the top value as needed
+                        left: "50px", // Adjust the right value as needed
                     }}
                 >
                     <span style={{ color: "#fff", fontSize: "1.2rem" }}>

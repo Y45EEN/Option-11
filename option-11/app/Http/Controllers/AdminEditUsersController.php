@@ -11,4 +11,20 @@ class AdminEditUsersController extends Controller
         $users = User::all();
         return Inertia::render('AdminEditUsers', ['users' => $users]);
     }
+
+    public function update(Request $request) {
+
+
+
+    }
+
+    public function delete(Request $request) {
+
+        $userid =$request->input('userid');
+
+        $user = User::where('userid', $userid);
+    
+        $user->delete();
+        
+    }
 }
