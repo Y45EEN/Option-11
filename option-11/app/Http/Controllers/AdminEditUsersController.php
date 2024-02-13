@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Redirect;
 class AdminEditUsersController extends Controller
 {
     public function show(Request $request)
@@ -12,19 +13,27 @@ class AdminEditUsersController extends Controller
         return Inertia::render('AdminEditUsers', ['users' => $users]);
     }
 
-    public function update(Request $request) {
+    public function updateShow(Request $request,$userid) {
+
+        $user = User::where('userid', $userid);
+
+        return Inertia::render('AdminUpdateUser', ['user' => $user]);
+
 
 
 
     }
 
-    public function delete(Request $request) {
+    public function delete(Request $request,$userid) {
 
-        $userid =$request->input('userid');
+        
 
         $user = User::where('userid', $userid);
     
         $user->delete();
-        
+
+        return  Redirect::to('/adminEditUsers');
     }
+
+    
 }

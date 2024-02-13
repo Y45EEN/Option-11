@@ -7,16 +7,16 @@ import { HSquareFill } from "react-bootstrap-icons";
 import { Link } from "@inertiajs/react";
 
 const AdminEditUsers = ({ users }) => {
-    const bikePartList = users.map((part) => (
+    const bikePartList = users.map((user) => (
        
 
     <tr>
     
-      <td scope="row">{part.userid}</td>
-      <td scope="row">{part.firstname}</td>
-      <td scope="row">{part.lastname}</td>
+      <td scope="row">{user.userid}</td>
+      <td scope="row">{user.firstname}</td>
+      <td scope="row">{user.lastname}</td>
 
-      <td scope="row"><a href="">Edit User</a> <a href="">Delete user</a></td>
+      <td scope="row"><a ) >Edit User</a> <a href={route("adminDeleteUsers", { userid: user.userid }) }>Delete user</a></td>
     
     </tr>
 

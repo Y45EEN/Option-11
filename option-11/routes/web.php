@@ -95,6 +95,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/adminDashboard', [AdminDashboardController::class, 'dashboard'])->name('adminDashboard');
 
     Route::get('/adminEditUsers', [AdminEditUsersController::class, 'show'])->name('adminEditUsers');
+    Route::get('/adminDeleteUsers{userid}', [AdminEditUsersController::class, 'delete'])->name('adminDeleteUsers');
+
 
 
 
