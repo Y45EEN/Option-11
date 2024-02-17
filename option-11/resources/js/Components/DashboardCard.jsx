@@ -1,18 +1,35 @@
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+const DashboardCard = ({ cardName, children }) => {
+    const [selectedBikePartId, setSelectedBikePartId] = useState(false);
 
-const DashboardCard = ({ children, onClick }) => {
- 
-  return (
-    <motion.div
-      onClick={onClick}
-      className="backdrop"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      {children}
-    </motion.div>
-  );
+    const setOpen = () => {
+        if (selectedBikePartId == false) {
+            setSelectedBikePartId(true);
+        } else {
+            setSelectedBikePartId(false);
+        }
+    };
+
+
+
+   
+
+    return (
+        <div className="dashboardcard">
+            <div
+                className={
+                    "dashboardContainer " +
+                    (selectedBikePartId ? "expand" : "closed")
+                }
+            >
+                <div className="card-title dashboard"  onClick={() => { setOpen();arrow() }}>
+                   <p >  {cardName} </p>
+                </div>
+
+                <div className="card-open">{children}</div>
+            </div>
+        </div>
+    );
 };
 
 export default DashboardCard;

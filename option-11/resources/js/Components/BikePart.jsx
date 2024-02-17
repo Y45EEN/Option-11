@@ -24,7 +24,7 @@ const BikePart = ({ bikePart, success,auth,openModal }) => {
     const bikePartList = bikePart.map((part) => (
         <div
             key={part.bikepartsid}
-            className={`col-md-6 mb-4 ${selectedBikePartId === part.bikepartsid ? "selected-bike-part" : ""
+            className={`col-md-6 mb-4 ${selectedBikePartId === part.bikepartsid
                 }`}
             onClick={() => {
                 setSelectedBikePartId(part.bikepartsid);

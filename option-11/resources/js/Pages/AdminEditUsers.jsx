@@ -16,7 +16,7 @@ const AdminEditUsers = ({ users }) => {
       <td scope="row">{user.firstname}</td>
       <td scope="row">{user.lastname}</td>
 
-      <td scope="row"><a ) >Edit User</a> <a href={route("adminDeleteUsers", { userid: user.userid }) }>Delete user</a></td>
+      <td scope="row"><a href={route("adminUpdateShow", { userid: user.userid })} >Edit User</a> <a href={route("adminDeleteUsers", { userid: user.userid }) }>Delete user</a> <a href={route("adminExport", { dbName: "users" })} >EXxport</a></td>
     
     </tr>
 

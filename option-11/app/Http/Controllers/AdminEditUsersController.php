@@ -15,9 +15,10 @@ class AdminEditUsersController extends Controller
 
     public function updateShow(Request $request,$userid) {
 
-        $user = User::where('userid', $userid);
+        $user = User::where('userid', $userid)->first();
 
-        return Inertia::render('AdminUpdateUser', ['user' => $user]);
+
+        return Inertia::render('AdminUpdateUserForm', ['user' => $user]);
 
 
 
