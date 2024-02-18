@@ -34,7 +34,7 @@ class ShowClothingController extends Controller
     public function addBasket(Request $request) {
 
         $validateInput = $request->validate([
-            'quantity' => 'required|not_in:0',
+            'quantity' => 'numeric|required|not_in:0|max:10',
             
             
     
@@ -56,7 +56,8 @@ class ShowClothingController extends Controller
         $basket->status = 'open';
         $basket->save();
 
-        return Redirect::route('clothing');
+        return redirect()->back()->with('success', "Item successfully added to basket!");
+
         }
 
 }

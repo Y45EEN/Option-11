@@ -7,12 +7,12 @@ import { AnimatePresence } from 'framer-motion';
 import NavBar from "@/Components/NavBar";
 import Login from '@/Pages/Auth/Login';
 import AnimateModal from '@/Components/AnimateModal';
-const AccessoryProducts = ({ auth, accessories,baskIcon }) => {
+const AccessoryProducts = ({ auth, accessories }) => {
   
 
     return (
         <div>
-            <AnimateModal auth={auth} baskIcon={baskIcon}>
+            <AnimateModal auth={auth}>
           
           
             <Accessory accessories={accessories} auth={auth}/>

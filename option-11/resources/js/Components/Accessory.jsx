@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import InputError from "@/Components/InputError";
 
 const Accessory = ({ accessories,auth, openModal }) => {
+    const { flash } = usePage().props
     const { data, setData, post, processing, errors, reset } = useForm({
         accessoryid_hidden: "",
         quantity: "",
@@ -60,6 +61,7 @@ const Accessory = ({ accessories,auth, openModal }) => {
                             name="quantity"
                             onChange={(e) => setData("quantity", e.target.value)}
                         />
+                        <p className="text-black">{flash.message}</p>
                         <InputError message={errors.quantity} className="mt-2" />
                     </div>
                 </div>

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import InputError from "@/Components/InputError";
 
 const RepairKit = ({ repairKit, success,auth,openModal }) => {
+    const { flash } = usePage().props
     const { data, setData, post, processing, errors, reset } = useForm({
         repairkitsid_hidden: "",
         quantity: "",
@@ -55,6 +56,7 @@ const RepairKit = ({ repairKit, success,auth,openModal }) => {
                             name="quantity"
                             onChange={(e) => setData("quantity", e.target.value)}
                         />
+                        <p className="text-black">{flash.message}</p>
                         <InputError message={errors.quantity} className="mt-2" />
                     </div>
                 </div>

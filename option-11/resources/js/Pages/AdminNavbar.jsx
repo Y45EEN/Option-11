@@ -8,7 +8,7 @@ const AdminNavbar = ({ auth, openModal }) => {
     return (
         <Navbar className="navbar" collapseOnSelect expand="lg" data-bs-theme="dark">
             <Container>
-                <Navbar.Brand className="nav-logo fs-1" href="/">
+                <Navbar.Brand className="nav-logo fs-1"  href={route('adminDashboard')}>
                     Option 11
                     <Image src={krakenLogo} rounded fluid className="kraken-logo" />
                 </Navbar.Brand>
@@ -23,6 +23,12 @@ const AdminNavbar = ({ auth, openModal }) => {
                         </NavDropdown>
                         <Nav.Link
                             className="text-grey  "
+                            href={route("adminEditUsers")}
+                        >
+                            Manage users
+                        </Nav.Link>
+                        <Nav.Link
+                            className="text-grey  "
                             href="/contactus"
                         >
                             Add Product
@@ -33,28 +39,8 @@ const AdminNavbar = ({ auth, openModal }) => {
                         >
                             Remove/Edit Product
                         </Nav.Link>
-                        {auth.user ? (
-                            <>
-                                {" "}
-                                <Nav.Link className="px-4" href="/basket">
-                                    <Image src={basketIcon} rounded fluid className="basket-icon" />
-                                </Nav.Link>
-                                <Nav.Link
-                                    className="text-black bg-info rounded-2 px-4 "
-                                    href="/dashboard"
-                                >
-                                    My Account
-                                </Nav.Link>
-                            </>
-                        ) : (
-                            <Nav.Link
-                                className="text-black bg-info rounded-2 px-4 "
-
-                                onClick={openModal}
-                            >
-                                Login
-                            </Nav.Link>
-                        )}
+                   
+                        
                     </Nav>
                 </Navbar.Collapse>
             </Container>

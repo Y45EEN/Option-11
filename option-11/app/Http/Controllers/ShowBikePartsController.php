@@ -33,9 +33,9 @@ class ShowBikePartsController extends Controller
 public function addBasket(Request $request) {
 
     $validateInput = $request->validate([
-        'quantity' => 'required|not_in:0',
-        
-        
+       'quantity' => 'numeric|required|not_in:0|max:10',
+
+      
 
     ]);
  
@@ -52,8 +52,10 @@ public function addBasket(Request $request) {
     
         $basket->status = 'open';
         $basket->save();
+        Inertia::share('success', $bike->price);
 
-        return Redirect::route('BikeParts');
+        return redirect()->back()->with('success', "Item successfully added to basket!");
+
     }
 
 }

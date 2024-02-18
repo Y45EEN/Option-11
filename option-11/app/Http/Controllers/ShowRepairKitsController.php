@@ -35,7 +35,14 @@ class ShowRepairKitsController extends Controller
 
 public function addBasket(Request $request) {
 
-    
+    $validateInput = $request->validate([
+        'quantity' => 'numeric|required|not_in:0|max:10',
+        
+        
+
+    ]);
+
+    if ($validateInput) {
 
         $basket = new Basket();
         $basket->userid =  auth()->user()->userid;
@@ -49,7 +56,11 @@ public function addBasket(Request $request) {
         $basket->status = 'open';
         $basket->save();
 
-        return Redirect::route('repairKits');
+        return redirect()->back()->with('success', "Item successfully added to basket!");
+
+    }
+
+       
 
 }
 }

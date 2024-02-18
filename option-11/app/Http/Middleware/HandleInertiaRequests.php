@@ -32,17 +32,13 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         
-    $admin = Auth::guard('admin')->user();
-    if (Auth::guard('web')->user()) {
-
-        $basket = Basket::where('userid', auth()->user()->userid)->where('status', 'open')->get();
-        $basketCount = count($basket);
-
-
-    } else {
-
-        $basketCount = null;
-    }
+        $admin = Auth::guard('admin')->user();
+        if (Auth::guard('web')->user()) {
+            $basket = Basket::where('userid', auth()->user()->userid)->where('status', 'open')->get();
+            $basketCount = count($basket);
+        } else {
+            $basketCount = null;
+        }
  
 
         return [
@@ -59,7 +55,7 @@ class HandleInertiaRequests extends Middleware
             ],
             'flash' => [
                 
-                'message' => fn () => $request->session()->get('message')
+                'message' => fn () => $request->session()->get('success')
             ],
 
             'baskIcon' => [

@@ -55,7 +55,8 @@ class ShowAccessoriesController extends Controller
         $basket->status = 'open';
         $basket->save();
 
-        return Redirect::route('accessoryProducts');
+        return redirect()->back()->with('success', "Item successfully added to basket!");
+
         }
     }
 }

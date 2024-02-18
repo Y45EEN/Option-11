@@ -1,8 +1,9 @@
 import { Container, Nav, Navbar, Image, NavDropdown } from "react-bootstrap";
 import krakenLogo from "../../assets/Kraken_logo.png";
 import basketIcon from "../../assets/basket-icon.png";
-
-const NavBar = ({ auth, openModal, baskIcon }) => {
+import { usePage } from '@inertiajs/react'
+const NavBar = ({ auth, openModal }) => {
+    const { baskIcon } = usePage().props
     const itemBasket = () => {
         //onnly shows the icon if there is an item in the basket
         if (baskIcon.basketCount > 0) {

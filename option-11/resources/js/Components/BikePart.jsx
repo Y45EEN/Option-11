@@ -2,7 +2,8 @@ import { useForm } from "@inertiajs/react";
 import React, { useState } from "react";
 import InputError from "@/Components/InputError";
 
-const BikePart = ({ bikePart, success,auth,openModal }) => {
+const BikePart = ({ bikePart,auth,openModal }) => {
+    const { flash } = usePage().props
     const { data, setData, post, processing, errors, reset } = useForm({
         bikepartid_hidden: "",
         quantity: "",
@@ -61,6 +62,7 @@ const BikePart = ({ bikePart, success,auth,openModal }) => {
                             name="quantity"
                             onChange={(e) => setData("quantity", e.target.value)}
                         />
+                        <p className="text-black">{flash.message}</p>
                         <InputError message={errors.quantity} className="mt-2" />
                     </div>
                 </div>

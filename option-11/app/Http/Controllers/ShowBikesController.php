@@ -54,7 +54,7 @@ public function addBasket(Request $request) {
 
 
     $validateInput = $request->validate([
-        'quantity' => 'required|not_in:0',
+        'quantity' => 'numeric|required|not_in:0|max:10',
         
         
 
@@ -77,9 +77,8 @@ public function addBasket(Request $request) {
         //an erorr validation will be needed to add here, to check if thre is enough stock
         $basket->save();
         $bike->save();
-        
-   
-        return Redirect::route('products',['success' => 'Item successfully added to basket!']);
+       
+        return redirect()->back()->with('success', "Item successfully added to basket!");
 
 
     }
