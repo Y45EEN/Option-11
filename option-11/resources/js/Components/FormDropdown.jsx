@@ -15,7 +15,7 @@ const FormDropdown = ({ cardName, children }) => {
    
 
     return (
-        <div className="dropdown">
+        <div className="dropdownUpdate">
             <div
                 className={
                     "dropdowncontainer " +

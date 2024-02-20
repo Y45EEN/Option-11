@@ -9,7 +9,7 @@ const AdminNavbar = ({ auth, openModal }) => {
         <Navbar className="navbar" collapseOnSelect expand="lg" data-bs-theme="dark">
             <Container>
                 <Navbar.Brand className="nav-logo fs-1"  href={route('adminDashboard')}>
-                    Option 11
+                    Admin
                     <Image src={krakenLogo} rounded fluid className="kraken-logo" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
