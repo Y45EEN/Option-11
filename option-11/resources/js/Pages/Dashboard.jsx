@@ -20,6 +20,21 @@ export default function Dashboard({ auth, baskIcon }) {
                     <DashboardCard cardName="My account">
                     <div className="d-flex justify-content-evenly mt-1">
                             <div className="d-flex flex-col space-y-3">
+                                
+                                <Link
+                                    href={route("updateAccount")}
+                                    className=" text-center bg-blue-500 text-white px-4 py-2 rounded-md  "
+                                >
+                                    Update personal information
+                                </Link>
+
+                                <Link
+                                    href={route("updateAccount")}
+                                    className=" text-center bg-blue-500 text-white px-4 py-2 rounded-md  "
+                                >
+                                    Manage my addresses 
+                                    
+                                </Link>
                                 <Link
                                     href={route("logout")}
                                     className=" text-center bg-yellow-500 text-white px-4 py-2 rounded-md  "
@@ -27,17 +42,10 @@ export default function Dashboard({ auth, baskIcon }) {
                                     Logout
                                 </Link>
                                 <Link
-                                    href={route("updateAccount")}
-                                    className=" text-center bg-blue-500 text-white px-4 py-2 rounded-md  "
+                                    href={route("logout")}
+                                    className=" text-center bg-yellow-500 text-white px-4 py-2 rounded-md  "
                                 >
-                                    Update Email
-                                </Link>
-
-                                <Link
-                                    href={route("updateAccount")}
-                                    className=" text-center bg-blue-500 text-white px-4 py-2 rounded-md  "
-                                >
-                                    Update address
+                                    Delete account
                                 </Link>
                             </div>
                         </div>
@@ -61,6 +69,7 @@ export default function Dashboard({ auth, baskIcon }) {
                     <DashboardCard cardName="Wishlist">
                         
                     </DashboardCard>
+                    
                 </div>
             </AnimateModal>
         </>

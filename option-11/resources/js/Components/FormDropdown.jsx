@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const DashboardCard = ({ cardName, children }) => {
+const FormDropdown = ({ cardName, children }) => {
     const [dropdownstate, setDropdownopen] = useState(false);
 
     const setOpen = () => {
@@ -15,22 +15,21 @@ const DashboardCard = ({ cardName, children }) => {
    
 
     return (
-        <div className="dashboardcard">
+        <div className="dropdown">
             <div
                 className={
-                    "dashboardContainer " +
+                    "dropdowncontainer " +
                     (dropdownstate ? "expand" : "closed")
                 }
             >
-                <div className="card-title dashboard"  onClick={() => { setOpen() }}>
-                   <p >  {cardName} </p>
+                <div className="card-title dropdown" >
+                   <p >  {cardName} :   <button onClick={() => { setOpen() }}>Edit</button> </p>
                 </div>
 
-                <div className="card-open">{children}</div>
-                
+                <div className="card-open dropdown">{children}</div>
             </div>
         </div>
     );
 };
 
-export default DashboardCard;
+export default FormDropdown;

@@ -6,13 +6,16 @@ import { useEffect } from "react";
 import NavBar from "@/Components/NavBar";
 import AnimateModal from "@/Components/AnimateModal";
 import InputError from "@/Components/InputError";
+
+
+import FormDropdown from "@/Components/FormDropdown";
 export default function UpdateAccount({ auth, baskIcon }) {
     //below is a form template, needs to be replaced
     const { data, setData, post, processing, errors, reset } = useForm({
-        firstname: "",
-        lastname: "",
-        email: "",
-        phonenumber: "",
+        firstname: auth.user.firstname,
+        lastname: auth.user.lastname,
+        email: auth.user.email,
+        phonenumber: auth.user.phonenumber,
         password: "",
         password_confirmation: "",
     });
@@ -27,6 +30,8 @@ export default function UpdateAccount({ auth, baskIcon }) {
         e.preventDefault();
         post(route("update"));
     };
+    
+
 
     return (
         <div>
@@ -39,9 +44,9 @@ export default function UpdateAccount({ auth, baskIcon }) {
 
                     <Row className="mb-3">
                         <Col md={6} className="pr-md-2">
-                            <Form.Group controlId="formBasicFirstName">
-                                <Form.Label>First name</Form.Label>
-                                <Form.Control
+                        <FormDropdown cardName={"First name" + " " + auth.user.firstname}> 
+
+                        <Form.Control
                                     id="firstname"
                                     name="firstname"
                                     value={data.firstname}
@@ -57,7 +62,7 @@ export default function UpdateAccount({ auth, baskIcon }) {
                                     message={errors.firstname}
                                     className="mt-2"
                                 />
-                            </Form.Group>
+                        </FormDropdown>
                         </Col>
 
                         <Col md={6} className="pl-md-2">

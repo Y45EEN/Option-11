@@ -6,9 +6,7 @@ const ContactUs = ({ auth,baskIcon }) => {
         <div>
            <AnimateModal auth={auth} baskIcon={baskIcon}>  
             <>
-                <style>
-               
-                </style>
+              
 
         
                 <div className="basketContainer">

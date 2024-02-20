@@ -354,7 +354,7 @@ div.expand {
 }
 .dashboard-container {
     display: flex;
-        max-width: 1230px;
+    max-width: 1230px;
     margin: 0 auto;
     padding: 2px;
     
@@ -386,3 +386,82 @@ div.expand {
 .dashboard-container > div {
     margin-right: 10px; /* Adjust the spacing as needed */
 }
+
+
+/* dropdowwn for update*/
+
+
+
+.dropdowncontainer {
+   
+    flex: 1;
+ 
+    overflow: hidden;
+    border-radius: 5px;
+    box-sizing: border-box;
+    height: 70px;
+
+
+
+
+
+    
+}
+
+
+
+.card-title.dropdown {
+
+    height: 30px;
+    width: 100%;
+    padding: 20px;
+
+
+    text-align: center;
+}
+
+.dropdowncontainer.expand {
+    height: 137px;
+}
+
+.card-open.dropdown {
+    padding: 40px;
+}
+
+.card-title.dropdown p {
+    text-align: center;
+
+    
+}
+.dropdown {
+    display: flex;
+        max-width: 1230px;
+    margin: 0 auto;
+    padding: 2px;
+    
+    
+}
+
+@media (max-width: 600px) {
+    .dashboard-container {
+        display: block;
+        max-width: 400px;
+        /* Make boxes take up 100% width when window size is below 600px */
+    }
+    .card-title.dashboard p {
+        font-size: large;
+    }
+    .dropdowncontainer {
+        margin: 2rem auto; 
+
+
+    }
+    .basketContainer  {
+
+        max-width: 400px;
+    }
+}
+
+
+
+
