@@ -1,7 +1,7 @@
 import { useForm } from "@inertiajs/react";
 import React, { useState } from "react";
 import InputError from "@/Components/InputError";
-
+import { usePage } from '@inertiajs/react'
 const Accessory = ({ accessories,auth, openModal }) => {
     const { flash } = usePage().props
     const { data, setData, post, processing, errors, reset } = useForm({

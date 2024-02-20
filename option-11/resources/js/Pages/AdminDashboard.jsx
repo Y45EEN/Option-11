@@ -40,7 +40,7 @@ const RepairBooking = ({ auth }) => {
                         </div>
                     </DashboardCard>
 
-                    <DashboardCard cardName="My orders">
+                    <DashboardCard cardName="Logs">
                         <Link
                             href={route("logout")}
                             className=" text-center bg-yellow-500 text-white px-4 py-2 rounded-md  "
@@ -53,6 +53,7 @@ const RepairBooking = ({ auth }) => {
                         >
                             Update Account
                         </Link>
+                        
                     </DashboardCard>
 
               
