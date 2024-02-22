@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Redirect;
 class ManageAccount extends Controller
 {
 
+    
   
 
     public function create () {
@@ -38,14 +39,22 @@ class ManageAccount extends Controller
     {
         $user = $request->user();
         $userID = $user->userid;
-
+        $firstname = $request->firstname ?? auth()->user()->firstname; // this means if  $request->firstname is null then use whatver is after ?? if not use it directly 
+        $lastname = $request->lastname ?? auth()->user()->lastname;
+        $phonenumber = $request->phonenumber ?? auth()->user()->phonenumber;
+        $email = $request->email ?? auth()->user()->email;
+       
         
+
+       
+        
+
             $validateInput = $request->validate([
-                'firstname' => 'required|string|max:255',
-                'lastname' => 'required|string|max:255',
-                'phonenumber' => 'required|string|max:12',
-                'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
-                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+                'firstname' => 'string|max:255',
+                'lastname' => 'string|max:255',
+                'phonenumber' => 'string|max:12',
+                'email' => 'string|lowercase|email|max:255',
+               
         
             ]);
         
@@ -56,18 +65,17 @@ class ManageAccount extends Controller
            
         
                 User::where('userid',$userID)->update([
-                    'firstname' => $request->firstname,
-                    'lastname' => $request->lastname,
-                    'phonenumber' => $request->phonenumber,
-                    'email' => $request->email,
-                    'password' => Hash::make($request->password)
+                    'firstname' => $firstname,
+                    'lastname' => $lastname,
+                    'phonenumber' => $phonenumber,
+                    'email' => $email,
+                   
         
         
         
                 ]);
                 // ManageAccount.php
-                $success = "Account succesffuly updated!";
-                return redirect('/dashboard')->with('success', $success);
+                return redirect()->back();
 
         
         

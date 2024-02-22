@@ -175,9 +175,9 @@ body {
 
 .basketClass {
     border-radius: 5px;
-    border: 1px solid #1b2c33;
+    border: 1px solid #212529;
     padding: 15px;
-    background-color: #1b2c33;
+    background-color: #212529;
     margin-bottom: 20px;
 }
 
@@ -315,7 +315,7 @@ body {
     box-sizing: border-box;
     height: 70px;
 
-    background: #1b2c33;
+    background: #212529;
 
     color: white;
 
@@ -323,9 +323,9 @@ body {
 }
 
 .card-title.dashboard:hover {
-    background: #121d22;
+    background: #212529;
   
-    border-color: #0056b3;
+   
     transform: scale(1.1);
 }
 
@@ -334,7 +334,7 @@ body {
     height: 70px;
     width: 100%;
     padding: 20px;
-    background: #1b2c33;
+  
 
     text-align: center;
 }
@@ -414,14 +414,14 @@ div.expand {
 
     height: 30px;
     width: 100%;
-    padding: 20px;
+
 
 
     text-align: center;
 }
 
 .dropdowncontainer.expand {
-    height: 137px;
+    height: 280px;
 }
 
 .card-open.dropdown {
@@ -433,6 +433,7 @@ div.expand {
 
     
 }
+
 .dropdownUpdate {
     display: flex;
         max-width: 1230px;
@@ -456,10 +457,7 @@ div.expand {
 
 
     }
-    .basketContainer  {
-
-        max-width: 400px;
-    }
+  
 }
 
 

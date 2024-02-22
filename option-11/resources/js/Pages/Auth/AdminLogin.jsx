@@ -2,8 +2,7 @@ import { motion } from "framer-motion";
 import React, { useEffect } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { Head, Link, useForm } from '@inertiajs/react';
-import NavBar from "@/Components/NavBar";
-import Backdrop from "@/Components/Backdrop";
+
 
 
 const AdminLogin = ({ handleClose,auth }) => {
@@ -50,7 +49,7 @@ const AdminLogin = ({ handleClose,auth }) => {
             type="text"
             name="username"
             value={data.email}
-            className="mt-1 block w-full"
+            className="block w-full mt-1"
             autoComplete="username"
             onChange={(e) => setData('username', e.target.value)}
           />

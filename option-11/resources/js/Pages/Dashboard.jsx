@@ -18,32 +18,32 @@ export default function Dashboard({ auth, baskIcon }) {
             <AnimateModal auth={auth} baskIcon={baskIcon}>
                 <div className="dashboard-container">
                     <DashboardCard cardName="My account">
-                    <div className="d-flex justify-content-evenly mt-1">
-                            <div className="d-flex flex-col space-y-3">
+                    <div className="mt-1 d-flex justify-content-evenly">
+                            <div className="flex-col space-y-3 d-flex">
                                 
                                 <Link
                                     href={route("updateAccount")}
-                                    className=" text-center bg-blue-500 text-white px-4 py-2 rounded-md  "
+                                    class="btn btn-dark"
                                 >
-                                    Update personal information
+                                    Personal information
                                 </Link>
 
                                 <Link
                                     href={route("updateAccount")}
-                                    className=" text-center bg-blue-500 text-white px-4 py-2 rounded-md  "
+                                    className="px-4 py-2 text-center text-white bg-blue-500 rounded-md "
                                 >
                                     Manage my addresses 
                                     
                                 </Link>
                                 <Link
                                     href={route("logout")}
-                                    className=" text-center bg-yellow-500 text-white px-4 py-2 rounded-md  "
+                                    className="px-4 py-2 text-center text-white bg-yellow-500 rounded-md "
                                 >
                                     Logout
                                 </Link>
                                 <Link
                                     href={route("logout")}
-                                    className=" text-center bg-yellow-500 text-white px-4 py-2 rounded-md  "
+                                    className="px-4 py-2 text-center text-white bg-yellow-500 rounded-md "
                                 >
                                     Delete account
                                 </Link>
@@ -54,13 +54,13 @@ export default function Dashboard({ auth, baskIcon }) {
                     <DashboardCard cardName="My orders">
                         <Link
                             href={route("logout")}
-                            className=" text-center bg-yellow-500 text-white px-4 py-2 rounded-md  "
+                            className="px-4 py-2 text-center text-white bg-yellow-500 rounded-md "
                         >
                             Logout
                         </Link>
                         <Link
                             href={route("updateAccount")}
-                            className=" text-center bg-blue-500 text-white px-4 py-2 rounded-md  "
+                            className="px-4 py-2 text-center text-white bg-blue-500 rounded-md "
                         >
                             Update Account
                         </Link>

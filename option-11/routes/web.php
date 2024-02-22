@@ -19,6 +19,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminEditUsersController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\CsvExporter;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -101,6 +102,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/adminUpdateShow{userid}', [AdminEditUsersController::class, 'updateShow'])->name('adminUpdateShow');
 
     Route::get('/adminExport{dbName}', [CsvExporter::class, 'export'])->name('adminExport');
+
+    Route::get('users/export/', [UserController::class, 'export']);
 
 
 

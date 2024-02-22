@@ -11,13 +11,9 @@ export default function Basket({ auth, basket, totalprice, bikes }) {
         basketid: null,
     });
 
-    const [quantities, setQuantities] = useState(basket.map(() => 1));
+  
 
-    const handleQuantityChange = (index, newQuantity) => {
-        const newQuantities = [...quantities];
-        newQuantities[index] = newQuantity;
-        setQuantities(newQuantities);
-    };
+
 
     const handleItemRemove = (e, basketid) => {
         e.preventDefault();
