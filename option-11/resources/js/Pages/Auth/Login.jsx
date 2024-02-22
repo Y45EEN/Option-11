@@ -41,7 +41,7 @@ const Login = ({ handleClose, auth }) => {
 
     const submit = (e) => {
         e.preventDefault();
-
+      
         post(route("login"));
     };
 
@@ -62,16 +62,19 @@ const Login = ({ handleClose, auth }) => {
                 exit="exit"
                 margin="auto"
             >
-                <Form
+             <Container>
+             <span class="close"  onClick={handleClose}>&times;</span>
+             <Form
                     className="p-5 rounded shadow-sm bg-dark text-light"
                     onSubmit={submit}
                 >
+                      
                     <Head title="Log in" />
 
-                    <h2 className="text-center mb-4 pt-4 h2">Log in</h2>
+                    <h2 className="pt-4 mb-4 text-center h2">Log in</h2>
 
                     {status && (
-                        <div className="mb-4 font-medium text-sm text-green-600">
+                        <div className="mb-4 text-sm font-medium text-green-600">
                             {status}
                         </div>
                     )}
@@ -83,7 +86,7 @@ const Login = ({ handleClose, auth }) => {
                             name="email"
                             value={data.email}
                             placeholder="hell"
-                            className="mt-1 block w-full"
+                            className="block w-full mt-1"
                             autoComplete="username"
                             onChange={(e) => setData("email", e.target.value)}
                         />
@@ -123,7 +126,7 @@ const Login = ({ handleClose, auth }) => {
                     <div className="flex items-center justify-end mt-4">
                         <Link
                             href="/register"
-                            className="link-info text-center"
+                            className="text-center link-info"
                         >
                             Not Registered? Click here to sign-up!
                         </Link>
@@ -138,6 +141,9 @@ const Login = ({ handleClose, auth }) => {
                         </Button>
                     </div>
                 </Form>
+                
+             </Container>
+               
             </motion.div>
         </Backdrop>
     );

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
-import { Link, useForm, usePage } from "@inertiajs/react";
+import { Link, useForm, usePage,Head } from "@inertiajs/react";
+
 import { useEffect } from "react";
 import NavBar from "@/Components/NavBar";
 import AnimateModal from "@/Components/AnimateModal";
@@ -148,6 +149,7 @@ export default function UpdateAccount({ auth, baskIcon }) {
                 className="p-5 rounded shadow-sm bg-dark text-light"
                 onSubmit={submit}
             >
+                <h2 className="pt-4 mb-4 text-center h2">Personal Information</h2>
                 <Row className="mb-3">
                     <Col md={6} className="pr-md-2">
                         <FormDropdown

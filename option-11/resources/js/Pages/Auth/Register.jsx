@@ -5,7 +5,7 @@ import AnimateModal from '@/Components/AnimateModal';
 import InputError from "@/Components/InputError";
 
 import NavBar from "@/Components/NavBar";
-const Register = ({auth}) => {
+const Register = ({auth,openModal}) => {
     const { data, setData, post, processing, errors, reset } = useForm({
         firstname: "",
         lastname: "",
@@ -14,6 +14,7 @@ const Register = ({auth}) => {
         password: "",
         password_confirmation: "",
     });
+
 
     useEffect(() => {
         return () => {
@@ -38,7 +39,7 @@ const Register = ({auth}) => {
                     className="p-5 rounded shadow-sm bg-dark text-light"
                     onSubmit={submit}
                 >
-                    <h2 className="text-center mb-4 pt-4 h2">Create Account</h2>
+                    <h2 className="pt-4 mb-4 text-center h2">Create Account</h2>
 
                     <Row className="mb-3">
                         <Col md={6} className="pr-md-2">
@@ -48,7 +49,7 @@ const Register = ({auth}) => {
                                     id="firstname"
                                     name="firstname"
                                     value={data.firstname}
-                                    className="mt-1 block w-full"
+                                    className="block w-full mt-1"
                                     autoComplete="firstname"
                                     isFocused={true}
                                     onChange={(e) =>
@@ -70,7 +71,7 @@ const Register = ({auth}) => {
                                     id="lastname"
                                     name="lastname"
                                     value={data.lastname}
-                                    className="mt-1 block w-full"
+                                    className="block w-full mt-1"
                                     autoComplete="lastname"
                                     isFocused={true}
                                     onChange={(e) =>
@@ -95,7 +96,7 @@ const Register = ({auth}) => {
                                     type="email"
                                     name="email"
                                     value={data.email}
-                                    className="mt-1 block w-full"
+                                    className="block w-full mt-1"
                                     autoComplete="username"
                                     onChange={(e) =>
                                         setData("email", e.target.value)
@@ -117,7 +118,7 @@ const Register = ({auth}) => {
                                     type="number"
                                     name="phonenumber"
                                     value={data.phonenumber}
-                                    className="mt-1 block w-full"
+                                    className="block w-full mt-1"
                                     autoComplete="phonenumber"
                                     onChange={(e) =>
                                         setData("phonenumber", e.target.value)
@@ -141,7 +142,7 @@ const Register = ({auth}) => {
                                     type="password"
                                     name="password"
                                     value={data.password}
-                                    className="mt-1 block w-full"
+                                    className="block w-full mt-1"
                                     autoComplete="new-password"
                                     onChange={(e) =>
                                         setData("password", e.target.value)
@@ -163,7 +164,7 @@ const Register = ({auth}) => {
                                     type="password"
                                     name="password_confirmation"
                                     value={data.password_confirmation}
-                                    className="mt-1 block w-full"
+                                    className="block w-full mt-1"
                                     autoComplete="new-password"
                                     onChange={(e) =>
                                         setData(
@@ -183,12 +184,13 @@ const Register = ({auth}) => {
 
                     <div className="flex items-center justify-end mt-4">
                         <Link
-                            href={route("login")}
-                            className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                         href={route("login")}
+                           
+                            className="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                             Already registered?
                         </Link>
-
+                     
                         <Button
                             variant="primary"
                             type="submit"
