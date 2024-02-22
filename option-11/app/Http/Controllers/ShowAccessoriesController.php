@@ -34,6 +34,9 @@ class ShowAccessoriesController extends Controller
 
     public function addBasket(Request $request)
     {
+
+        //to validate if item already exists inside the database, as well as a plus or minus button to increase quantity
+
         $validateInput = $request->validate([
             'quantity' => 'required|not_in:0',
             

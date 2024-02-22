@@ -23,27 +23,27 @@ export default function Dashboard({ auth, baskIcon }) {
                                 
                                 <Link
                                     href={route("updateAccount")}
-                                    class="btn btn-dark"
+                                    className="text-white btn btn-dark"
                                 >
                                     Personal information
                                 </Link>
 
                                 <Link
                                     href={route("updateAccount")}
-                                    className="px-4 py-2 text-center text-white bg-blue-500 rounded-md "
+                                    className="text-white btn btn-dark"
                                 >
                                     Manage my addresses 
                                     
                                 </Link>
                                 <Link
                                     href={route("logout")}
-                                    className="px-4 py-2 text-center text-white bg-yellow-500 rounded-md "
+                                    className="btn btn-outline-warning"
                                 >
                                     Logout
                                 </Link>
                                 <Link
                                     href={route("logout")}
-                                    className="px-4 py-2 text-center text-white bg-yellow-500 rounded-md "
+                                    className="btn btn-outline-danger"
                                 >
                                     Delete account
                                 </Link>
@@ -52,18 +52,7 @@ export default function Dashboard({ auth, baskIcon }) {
                     </DashboardCard>
 
                     <DashboardCard cardName="My orders">
-                        <Link
-                            href={route("logout")}
-                            className="px-4 py-2 text-center text-white bg-yellow-500 rounded-md "
-                        >
-                            Logout
-                        </Link>
-                        <Link
-                            href={route("updateAccount")}
-                            className="px-4 py-2 text-center text-white bg-blue-500 rounded-md "
-                        >
-                            Update Account
-                        </Link>
+                       
                     </DashboardCard>
 
                     <DashboardCard cardName="Wishlist">

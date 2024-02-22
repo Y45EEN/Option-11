@@ -309,7 +309,7 @@ body {
 .dashboardContainer {
    
     flex: 1;
-    cursor: pointer;
+
     overflow: hidden;
     border-radius: 5px;
     box-sizing: border-box;
@@ -325,7 +325,7 @@ body {
 .card-title.dashboard:hover {
     background: #212529;
   
-   
+    cursor: pointer;
     transform: scale(1.1);
 }
 
