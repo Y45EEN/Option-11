@@ -1,7 +1,7 @@
 import { useForm } from "@inertiajs/react";
 import React, { useState } from "react";
 import InputError from "@/Components/InputError";
-
+import { usePage } from '@inertiajs/react'
 const BikePart = ({ bikePart,auth,openModal }) => {
     const { flash } = usePage().props
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -34,7 +34,7 @@ const BikePart = ({ bikePart,auth,openModal }) => {
         >
             <div className="card">
                 <div className="card-body">
-                    <h5 className="card-title text-center h4">{part.productname}</h5>
+                    <h5 className="text-center card-title h4">{part.productname}</h5>
                     <p className="card-text">{part.description}</p>
                     <p className="card-text">
                         <strong>Price:</strong> £{part.price}
