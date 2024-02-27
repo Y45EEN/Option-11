@@ -12,6 +12,9 @@ import FormDropdown from "@/Components/FormDropdown";
 export default function UpdateAccount({ auth, baskIcon }) {
    
     const [state, setState] = useState(false);
+
+
+  
     //below is a form template, needs to be replaced
   
 
@@ -35,6 +38,7 @@ export default function UpdateAccount({ auth, baskIcon }) {
         email: auth.user.email,
         phonenumber: auth.user.phonenumber,
     });
+    
 
     const submit = (e) => {
         e.preventDefault();

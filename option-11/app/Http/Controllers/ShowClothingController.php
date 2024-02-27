@@ -43,20 +43,62 @@ class ShowClothingController extends Controller
         if ($validateInput) {
 
     
+            $finditem =  Basket::where('userid', auth()->user()->userid)->first();
+            $basket = new Basket();
 
-        $basket = new Basket();
-        $basket->userid =  auth()->user()->userid;
-        $basket->clothingid = request('clothingid_hidden');
-        $basket->quantity =request('quantity');
+            if ($finditem  ==  null) {
+
+   
+                $basket->userid =  auth()->user()->userid;
+                $basket->clothingid = request('clothingid_hidden');
+                $basket->quantity =request('quantity');
+                
+                $bike = Clothes::where('clothingid',$basket->clothingid)->first();
+                $basket->totalprice = $basket->quantity * $bike->price;
+               
+                $basket->status = 'open';
+                $basket->save();
+
         
-        $bike = Clothes::where('clothingid',$basket->clothingid)->first();
-        $basket->totalprice = $basket->quantity * $bike->price;
-        $bike->stockquantity = $bike->stockquantity -  $basket->quantity;
-    
-        $basket->status = 'open';
-        $basket->save();
+                return redirect()->back()->with('success', "Item successfully added to basket!");
 
-        return redirect()->back()->with('success', "Item successfully added to basket!");
+            }
+
+            $record = Basket::where('userid', auth()->user()->userid)->where('clothingid',  request('clothingid_hidden'))->first();
+
+
+            if ($record) {
+
+                $record->quantity = request('quantity') + $record->quantity;
+
+                $record->save();
+
+                return redirect()->back()->with('success', "Item successfully added to basket!");
+
+               
+
+
+
+
+            } else {
+
+             
+                $basket->userid =  auth()->user()->userid;
+                $basket->clothingid = request('clothingid_hidden');
+                $basket->quantity =request('quantity');
+                
+                $bike = Clothes::where('clothingid',$basket->clothingid)->first();
+                $basket->totalprice = $basket->quantity * $bike->price;
+                $bike->stockquantity = $bike->stockquantity -  $basket->quantity;
+            
+                $basket->status = 'open';
+                $basket->save();
+        
+                return redirect()->back()->with('success', "Item successfully added to basket!");
+            }
+ 
+
+       
 
         }
 

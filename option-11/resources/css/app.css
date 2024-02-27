@@ -369,12 +369,49 @@ div.expand {
     font-size: x-large;
 }
 .dashboard-container {
+    display: block;
+  
+    margin: 0 auto;
+    width: 100%;
+    text-align: left;
+   
+    
+    
+}
+.dashboard-groups {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1000px;
+ 
+  
+   
+    
+}
+
+.has {
+
+    display: block;
+    overflow: hidden;
+}
+.adminDashboard-container {
     display: flex;
     max-width: 1230px;
     margin: 0 auto;
     padding: 2px;
-    
-    
+
+
+}
+
+@media (max-width: 700px) { 
+    .dashboard-groups{
+
+        display: block;
+    }
+    .dashboardContainer {
+        margin: 2rem auto; 
+
+
+    }
 }
 
 @media (max-width: 600px) {
@@ -383,6 +420,7 @@ div.expand {
         max-width: 400px;
         /* Make boxes take up 100% width when window size is below 600px */
     }
+ 
     .card-title.dashboard p {
         font-size: large;
     }
@@ -460,14 +498,7 @@ div.expand {
 }
 
 @media (max-width: 600px) {
-    .dashboard-container {
-        display: block;
-        max-width: 400px;
-        /* Make boxes take up 100% width when window size is below 600px */
-    }
-    .card-title.dashboard p {
-        font-size: large;
-    }
+   
     .dropdowncontainer {
         margin: 2rem auto; 
 

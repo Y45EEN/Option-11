@@ -25,8 +25,11 @@ const DashboardCard = ({ cardName, children }) => {
                 <div className="card-title dashboard"  onClick={() => { setOpen() }}>
                    <p >  {cardName} </p>
                 </div>
+                
 
                 <div className="card-open">{children}</div>
+
+            
                 
             </div>
         </div>

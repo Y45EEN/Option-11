@@ -16,12 +16,24 @@ export default function Dashboard({ auth, baskIcon }) {
     return (
         <>
             <AnimateModal auth={auth} baskIcon={baskIcon}>
-                <div className="dashboard-container">
+
+            <div className="dashboard-groups">
+            <div className="dashboard-container">
+                    <DashboardCard cardName="My orders"></DashboardCard>
                     <DashboardCard cardName="My account">
-                    <div className="mt-1 d-flex justify-content-evenly">
-                            <div className="flex-col space-y-3 d-flex">
-                                
-                                <Link
+                        <div
+                         style={{
+                            width: "10rem",
+                            height: "1rem",
+                            position:
+                                "relative",
+                            // Adjust the top value as needed
+                            left: "12px", // Adjust the right value as needed
+                            bottom: "24px",
+                        }}
+                        >
+
+<Link
                                     href={route("updateAccount")}
                                     className="text-white btn btn-dark"
                                 >
@@ -32,8 +44,7 @@ export default function Dashboard({ auth, baskIcon }) {
                                     href={route("updateAccount")}
                                     className="text-white btn btn-dark"
                                 >
-                                    Manage my addresses 
-                                    
+                                    Manage my addresses
                                 </Link>
                                 <Link
                                     href={route("logout")}
@@ -47,19 +58,24 @@ export default function Dashboard({ auth, baskIcon }) {
                                 >
                                     Delete account
                                 </Link>
-                            </div>
+                          
                         </div>
+                             
                     </DashboardCard>
-
-                    <DashboardCard cardName="My orders">
-                       
-                    </DashboardCard>
-
-                    <DashboardCard cardName="Wishlist">
-                        
-                    </DashboardCard>
-                    
+                   
                 </div>
+                <div className="dashboard-container">
+                <DashboardCard cardName="Wishlist"></DashboardCard>
+                   
+                    <DashboardCard cardName="Additional services">
+                        {/* add tracking tracking seervice for bikes, repair service,  */}
+                    </DashboardCard>
+                  
+                </div>
+              
+
+            </div>
+                
             </AnimateModal>
         </>
     );

@@ -12,27 +12,27 @@ const RepairBooking = ({ auth }) => {
         <div>
             <AdminNavbar/>
 
-            <div className="dashboard-container">
-
+            <div class="adminDashboard-container">
+       
             <DashboardCard cardName="Notifications">
-                    <div className="d-flex justify-content-evenly mt-1">
-                            <div className="d-flex flex-col space-y-3">
+                    <div className="mt-1 d-flex justify-content-evenly">
+                            <div className="flex-col space-y-3 d-flex">
                                 <Link
                                     href={route("logout")}
-                                    className=" text-center bg-yellow-500 text-white px-4 py-2 rounded-md  "
+                                    className="px-4 py-2 text-center text-white bg-yellow-500 rounded-md "
                                 >
                                     Logout
                                 </Link>
                                 <Link
                                     href={route("updateAccount")}
-                                    className=" text-center bg-blue-500 text-white px-4 py-2 rounded-md  "
+                                    className="px-4 py-2 text-center text-white bg-blue-500 rounded-md "
                                 >
                                     Update Email
                                 </Link>
 
                                 <Link
                                     href={route("updateAccount")}
-                                    className=" text-center bg-blue-500 text-white px-4 py-2 rounded-md  "
+                                    className="px-4 py-2 text-center text-white bg-blue-500 rounded-md "
                                 >
                                     Update address
                                 </Link>
@@ -43,13 +43,13 @@ const RepairBooking = ({ auth }) => {
                     <DashboardCard cardName="Logs">
                         <Link
                             href={route("logout")}
-                            className=" text-center bg-yellow-500 text-white px-4 py-2 rounded-md  "
+                            className="px-4 py-2 text-center text-white bg-yellow-500 rounded-md "
                         >
                             Logout
                         </Link>
                         <Link
                             href={route("updateAccount")}
-                            className=" text-center bg-blue-500 text-white px-4 py-2 rounded-md  "
+                            className="px-4 py-2 text-center text-white bg-blue-500 rounded-md "
                         >
                             Update Account
                         </Link>
