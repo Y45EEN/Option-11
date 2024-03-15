@@ -15,6 +15,11 @@ use App\Http\Controllers\ShowClothingController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ShowRepairBookingController;
 use App\Http\Controllers\ShowOrdersController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminEditUsersController;
+use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\CsvExporter;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +40,9 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/contactUs', function () {
+    return Inertia::render('Contactus');
+});
 Route::get('/updateAccount', function () {
 
    
@@ -66,6 +74,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
+
 Route::get('/BikeProducts', [ShowBikesController::class, 'showAll'])->name('products');
 //squob work below
 Route::get('/BikeParts', [ShowBikePartsController::class, 'showAll'])->name('BikeParts');
@@ -81,13 +90,44 @@ Route::get('/RepairBooking', [ShowRepairBookingController::class, 'showAll'])->n
 
 Route::get('/Orders', [ShowOrdersController::class, 'showAll'])->name('orders');
 
+Route::group(['middleware' => ['admin']], function () {
 
+    
+    
+    Route::get('/adminDashboard', [AdminDashboardController::class, 'dashboard'])->name('adminDashboard');
+
+    Route::get('/adminEditUsers', [AdminEditUsersController::class, 'show'])->name('adminEditUsers');
+    Route::get('/adminDeleteUsers{userid}', [AdminEditUsersController::class, 'delete'])->name('adminDeleteUsers');
+
+    Route::get('/adminUpdateShow{userid}', [AdminEditUsersController::class, 'updateShow'])->name('adminUpdateShow');
+
+    Route::get('/adminExport{dbName}', [CsvExporter::class, 'export'])->name('adminExport');
+
+    Route::get('users/export/', [UserController::class, 'export']);
+
+
+
+
+        
+
+});
+Route::group(['middleware' => ['admin.guest']], function () {
+
+
+
+
+    Route::get('/adminLogin', [AdminLoginController::class, 'create'])->name('adminLogin');
+    Route::post('/adminLogin', [AdminLoginController::class, 'store']);
+
+
+
+        
+
+}); 
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+  
     Route::get('deleteAccount', [ManageAccount::class, 'destroy'])
     ->name('deleteAccount');
     Route::get('/basket', [ManageBasketController::class, 'search'])->name('basket');
@@ -104,6 +144,10 @@ Route::middleware('auth')->group(function () {
     Route::match(['get', 'post'],'/deleteProduct','App\Http\Controllers\ManageBasketController@deleteProduct')->name('deleteProduct');
 
     Route::match(['get', 'post'],'/orderHistory','App\Http\Controllers\OrdersController@showAll')->name('orderHistory');
+
+   
+
+
   
     
 });

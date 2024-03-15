@@ -4,10 +4,10 @@ import Accessory from "../components/Accessory";
 import React, { useState, useEffect } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, useForm } from "@inertiajs/react";
-
+import AnimateModal from '@/Components/AnimateModal';
 import NavBar from "@/Components/NavBar";
 
-const OrdersHistory = ({ auth, orders, bikes, basketitems, total }) => {
+const OrdersHistory = ({ auth, orders, bikes, basketitems }) => {
 
         
 
@@ -35,7 +35,7 @@ const OrdersHistory = ({ auth, orders, bikes, basketitems, total }) => {
 
     return (
         <>
-        <NavBar auth={auth} />
+        <AnimateModal auth={auth} >  
 
         <Head title="Basket" />
 
@@ -88,6 +88,7 @@ const OrdersHistory = ({ auth, orders, bikes, basketitems, total }) => {
         >
             ^ Back to Top
         </button>
+        </AnimateModal>
     </>
     );
 }

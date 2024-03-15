@@ -1,8 +1,9 @@
 import { useForm } from "@inertiajs/react";
 import React, { useState } from "react";
 import InputError from "@/Components/InputError";
-
-const BikePart = ({ bikePart, success }) => {
+import { usePage } from '@inertiajs/react'
+const BikePart = ({ bikePart,auth,openModal }) => {
+    const { flash } = usePage().props
     const { data, setData, post, processing, errors, reset } = useForm({
         bikepartid_hidden: "",
         quantity: "",
@@ -15,10 +16,16 @@ const BikePart = ({ bikePart, success }) => {
         post("/addBasketPart", data);
     };
 
+    const onClickPreventDefault= (e) => {
+        openModal();
+        e.preventDefault();
+        
+      };
+
     const bikePartList = bikePart.map((part) => (
         <div
             key={part.bikepartsid}
-            className={`col-md-6 mb-4 ${selectedBikePartId === part.bikepartsid ? "selected-bike-part" : ""
+            className={`col-md-6 mb-4 ${selectedBikePartId === part.bikepartsid
                 }`}
             onClick={() => {
                 setSelectedBikePartId(part.bikepartsid);
@@ -27,7 +34,7 @@ const BikePart = ({ bikePart, success }) => {
         >
             <div className="card">
                 <div className="card-body">
-                    <h5 className="card-title text-center h4">{part.productname}</h5>
+                    <h5 className="text-center card-title h4">{part.productname}</h5>
                     <p className="card-text">{part.description}</p>
                     <p className="card-text">
                         <strong>Price:</strong> £{part.price}
@@ -55,13 +62,23 @@ const BikePart = ({ bikePart, success }) => {
                             name="quantity"
                             onChange={(e) => setData("quantity", e.target.value)}
                         />
+                        <p className="text-black">{flash.message}</p>
                         <InputError message={errors.quantity} className="mt-2" />
                     </div>
                 </div>
                 <div className="card-footer">
-                    <button type="submit" className="btn btn-dark text-dark">
-                        Add to basket
-                    </button>
+                {auth.user ? (
+                     
+                     <button type="submit" className="btn btn-dark text-dark">
+                     Add to basket
+                 </button>
+                          
+                        ) : (
+                          
+                            <button type="submit" onClick={onClickPreventDefault} className="btn btn-dark text-dark">
+                            Add to basket
+                        </button>
+                        )}
                 </div>
             </div>
         </div>

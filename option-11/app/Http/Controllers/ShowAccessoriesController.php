@@ -34,6 +34,9 @@ class ShowAccessoriesController extends Controller
 
     public function addBasket(Request $request)
     {
+
+        //to validate if item already exists inside the database, as well as a plus or minus button to increase quantity
+
         $validateInput = $request->validate([
             'quantity' => 'required|not_in:0',
             
@@ -43,19 +46,67 @@ class ShowAccessoriesController extends Controller
      
         if ($validateInput) {
 
-        $basket = new Basket();
-        $basket->userid =  auth()->user()->userid;
-        $basket->accessoryid = request('accessoryid_hidden');
-        $basket->quantity =request('quantity');
-        
-        $bike = Accessory::where('accessoryid',$basket->accessoryid)->first();
-        $basket->totalprice = $basket->quantity * $bike->price;
-        $bike->stockquantity = $bike->stockquantity -  $basket->quantity;
-    
-        $basket->status = 'open';
-        $basket->save();
 
-        return Redirect::route('accessoryProducts');
+             
+        $finditem =  Basket::where('userid', auth()->user()->userid)->first();
+        $basket = new Basket();
+
+        if ($finditem  ==  null) { 
+
+
+            $basket = new Basket();
+            $basket->userid =  auth()->user()->userid;
+            $basket->accessoryid = request('accessoryid_hidden');
+            $basket->quantity =request('quantity');
+            
+            $bike = Accessory::where('accessoryid',$basket->accessoryid)->first();
+            $basket->totalprice = $basket->quantity * $bike->price;
+            $bike->stockquantity = $bike->stockquantity -  $basket->quantity;
+        
+            $basket->status = 'open';
+            $basket->save();
+    
+            return redirect()->back()->with('success', "Item successfully added to basket!");
+
+        }
+
+        $record = Basket::where('userid', auth()->user()->userid)->where('accessoryid',  request('accessoryid_hidden'))->first();
+
+
+        if ($record) {
+
+            $record->quantity = request('quantity') + $record->quantity;
+
+            $record->save();
+
+            return redirect()->back()->with('success', "Item successfully added to basket!");
+
+           
+
+
+
+
+        } else { 
+            $basket = new Basket();
+            $basket->userid =  auth()->user()->userid;
+            $basket->accessoryid = request('accessoryid_hidden');
+            $basket->quantity =request('quantity');
+            
+            $bike = Accessory::where('accessoryid',$basket->accessoryid)->first();
+            $basket->totalprice = $basket->quantity * $bike->price;
+            $bike->stockquantity = $bike->stockquantity -  $basket->quantity;
+        
+            $basket->status = 'open';
+            $basket->save();
+    
+            return redirect()->back()->with('success', "Item successfully added to basket!");
+
+        }
+
+
+
+    
+
         }
     }
 }

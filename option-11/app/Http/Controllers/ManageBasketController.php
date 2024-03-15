@@ -77,7 +77,8 @@ class ManageBasketController extends Controller
 
 
     }
-
+    
+    
     return Inertia::render('Basket',['basket' => $basket, 'totalprice' => $totalPrice, 'bikes' => $bikes ]);
 
     
@@ -91,9 +92,9 @@ public function deleteProduct(Request $request)
     $basket = Basket::where('userid', auth()->user()->userid)->get();
     $basketid =$request->input('basketid');
 
-    $projects = Basket::where('basketid', $basketid);
+    $basketFind = Basket::where('basketid', $basketid);
 
-    $projects->delete();
+    $basketFind->delete();
 
  
 

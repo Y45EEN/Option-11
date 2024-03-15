@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
-
+use Inertia\Inertia;
+use App\Models\Basket;
 class HandleInertiaRequests extends Middleware
 {
     /**
@@ -30,10 +31,23 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        
+        $admin = Auth::guard('admin')->user();
+        if (Auth::guard('web')->user()) {
+            $basket = Basket::where('userid', auth()->user()->userid)->where('status', 'open')->get();
+            $basketCount = count($basket);
+        } else {
+            $basketCount = null;
+        }
+ 
+
         return [
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
+            ],
+            'admin' => [
+                'admin' => $admin,
             ],
             'ziggy' => fn () => [
                 ...(new Ziggy)->toArray(),
@@ -41,8 +55,15 @@ class HandleInertiaRequests extends Middleware
             ],
             'flash' => [
                 
-                'message' => fn () => $request->session()->get('message')
+                'message' => fn () => $request->session()->get('success')
             ],
+
+            'baskIcon' => [
+
+               
+                'basketCount'=>$basketCount,
+               
+            ]
         ];
     }
 }

@@ -1,13 +1,14 @@
 // Desc: BikeParts page for the user to view all bike parts
 // We use react because we are using react components
-import React from "react";
+import React, { useState } from "react";
+import { AnimatePresence } from 'framer-motion';
 // We use inertia link to link to other pages
 import { InertiaLink } from '@inertiajs/inertia-react';
 // We import the bikepart component to use in the page
 import Clothes from "@/Components/Clothes";  // Updated import name
 // We import the authenticated layout to use the navbar
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-
+import AnimateModal from '@/Components/AnimateModal';
 // We import the navbar component to use the navbar
 import NavBar from "@/Components/NavBar";
 
@@ -19,11 +20,12 @@ const Clothing = ({ auth, clothes }) => {
 
     return (
         <div>
-            <NavBar auth={auth} />
+               <AnimateModal auth={auth}>  
 
-            <Clothes clothes={clothes} />
+            <Clothes clothes={clothes}  auth={auth} />
 
             <InertiaLink className="text-white" href={route('basket')}>Go to Basket</InertiaLink>
+            </AnimateModal>
         </div>
     );
 }

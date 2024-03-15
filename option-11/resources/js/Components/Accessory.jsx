@@ -1,8 +1,9 @@
 import { useForm } from "@inertiajs/react";
 import React, { useState } from "react";
 import InputError from "@/Components/InputError";
-
-const Accessory = ({ accessories }) => {
+import { usePage } from '@inertiajs/react'
+const Accessory = ({ accessories,auth, openModal }) => {
+    const { flash } = usePage().props
     const { data, setData, post, processing, errors, reset } = useForm({
         accessoryid_hidden: "",
         quantity: "",
@@ -14,6 +15,13 @@ const Accessory = ({ accessories }) => {
         e.preventDefault();
         post("/addBasketAccessory", data);
     };
+
+    const onClickPreventDefault= (e) => {
+        openModal();
+        e.preventDefault();
+        
+      };
+     
 
     const accessoryList = accessories.map((accessory) => (
         <div
@@ -29,6 +37,7 @@ const Accessory = ({ accessories }) => {
                 <div className="card-body">
                     <h5 className="card-title text-center h4">{accessory.productname}</h5>
                     <p className="card-text">{accessory.description}</p>
+                    
                     <p className="card-text">
                         <strong>Price:</strong> £{accessory.price}
                     </p>
@@ -52,13 +61,24 @@ const Accessory = ({ accessories }) => {
                             name="quantity"
                             onChange={(e) => setData("quantity", e.target.value)}
                         />
+                        <p className="text-black">{flash.message}</p>
                         <InputError message={errors.quantity} className="mt-2" />
                     </div>
                 </div>
                 <div className="card-footer">
-                    <button type="submit" className="btn btn-dark text-dark">
-                        Add to basket
-                    </button>
+                   
+                    {auth.user ? (
+                     
+                     <button type="submit" className="btn btn-dark text-dark">
+                     Add to basket
+                 </button>
+                          
+                        ) : (
+                          
+                            <button type="submit" onClick={onClickPreventDefault} className="btn btn-dark text-dark">
+                            Add to basket
+                        </button>
+                        )}
                 </div>
             </div>
         </div>
@@ -67,7 +87,8 @@ const Accessory = ({ accessories }) => {
     return (
         <form onSubmit={submit}>
             <div className="container">
-                <div className="row">{accessoryList}</div>
+                <div className="row">{accessoryList} </div>
+                
             </div>
         </form>
     );
