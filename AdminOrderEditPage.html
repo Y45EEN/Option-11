@@ -3,60 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Option 11</title>
     <style>
+        /* Add your CSS styles here */
         body {
             background-color: black;
             color: white;
             font-family: Arial, sans-serif;
         }
-        .container {
-            width: 80%;
-            margin: 50px auto;
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
         }
-        .input-group {
-            margin-bottom: 20px;
-        }
-        .input-group label {
+        
+        .navbar a {
+            float: left;
             display: block;
-            margin-bottom: 5px;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
         }
-        .input-group input[type="text"],
-        .input-group input[type="number"] {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid white;
-            border-radius: 5px;
-            background-color: black;
-            color: white;
+        
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
         }
-        .input-group input[type="radio"] {
-            margin-right: 5px;
+        
+        .order-form {
+            margin: 20px;
         }
     </style>
 </head>
 <body>
-    <h1 style="text-align: center;">Admin User Editing Page content</h1>
-    <div class="container">
-        <div class="input-group">
-            <label for="order-id">Order ID:</label>
-            <input type="text" id="order-id" name="order-id">
-        </div>
-        <div class="input-group">
-            <label for="delivery-status">Delivery Status:</label>
-            <input type="text" id="delivery-status" name="delivery-status">
-        </div>
-        <div class="input-group">
-            <label>Order Delivered? :  </label>
-            <input type="radio" id="yes" name="admin-confirmation" value="yes">
-            <label for="yes">Yes</label>
-            <input type="radio" id="no" name="admin-confirmation" value="no">
-            <label for="no">No</label>
-        </div>
-        <div class="input-group">
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1" value="1">
-        </div>
+    <div class="navbar">
+        <a href="#">Option 11</a>
+    </div>
+
+    <div class="order-form">
+        <h2>Admin Order Edit Page</h2>
+        <form action="tracking_page.html" method="GET">
+            <label for="status">Order Status:</label>
+            <select name="status" id="status">
+                <option value="unpaid">Unpaid</option>
+                <option value="paid">Paid</option>
+                <option value="dispatched">Dispatched</option>
+                <option value="delivered">Delivered</option>
+            </select><br><br>
+            <label for="tracking_code">Tracking Code:</label>
+            <input type="text" id="tracking_code" name="tracking_code"><br><br>
+            <input type="submit" value="Track Order">
+        </form>
     </div>
 </body>
 </html>
